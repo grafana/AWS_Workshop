@@ -108,6 +108,7 @@ In this graph we will explore how you can show the error rate as a stat panel fo
 ```Step 14:``` Press 'save' and then press 'apply'
 
 ### Part 5: Add a Panel to Show Error Logs
+In this part we will show you one option for presenting log data on a dashboard.
 
 ```Step 1:``` Add your final panel
 
