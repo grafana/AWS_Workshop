@@ -1,4 +1,4 @@
-(UNDER REVISION DO NOT USE YET)
+**(UNDER REVISION DO NOT USE YET)**
 ![Grafana Logo](logo.png)
 
 # Workshop: Harnessing the Power of AWS with Grafana 
