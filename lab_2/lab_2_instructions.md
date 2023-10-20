@@ -1,68 +1,28 @@
-# Lab 2: Utilizing Grafana Metrics, Logs, and Traces in Grafana Cloud
+# Lab 2: Utilizing Cloudwatch Metrics, Logs, and Traces in Grafana Cloud
 The goal of this lab is to guide you through visualizing and monitoring your systems using Grafana Metrics, Logs, and Traces using the Cloud Watch Integration and Grafana Agent in Grafana Cloud.
-
-## Options for sending telemetry data up
-To understand whether the integration or plugin best fits your use case, it’s important to understand the different options for sending telemetry data. 
-- The Cloudwatch plugin enables you to query metrics and logs straight from the CloudWatch API, but it does not store any data, so queries are always resolved by requesting from CloudWatch directly. 
-- The Cloudwatch integration, on the other hand, leverages an open-source exporter to continually pull CloudWatch metrics and store them in a Prometheus format.
-- The Grafana Agent deployed directly to ECS, EKS, EC2, etc., to pull metrics and logs and store them in a Prometheus format.
-
-
-As the integration stores your metrics in Prometheus format, querying them is done using the powerful Prometheus query language (PromQL) , enabling you to run familiar expressions such as `aws_ec2_cpuutilization_maximum{region=“eu-west-2”, scrape_job=”myEC2Job”}`. 
-The same can be done with metrics scraped via the Grafana Agent. 
-In contrast, the plugin provides its own querying interface for filtering metrics and logs, so there is no need to write your own query expressions.
-
 
 ## Setting up the AWS CloudWatch integration
 Let’s take a quick look at how the integration works with a step-by-step tour of the installation flow. 
+1. In your Grafana Cloud stack, click Connections in the left-hand menu.
+<img width="328" alt="Screenshot 2023-10-20 at 8 14 30 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/0a7a403c-0bfa-436f-aba7-b579e8f0e01a">
+2. Find AWS and click its tile to open the AWS integration.
+<img width="1416" alt="Screenshot 2023-10-20 at 8 14 50 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/3d2e4af3-d70f-403e-be60-31e08050e442">
+3. Find CloudWatch metrics and click its tile to open the integration
+<img width="1384" alt="Screenshot 2023-10-20 at 8 14 41 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/8500b7c2-2702-461e-9b0d-ec8dd99005f5">
+4._ For the purpose of this lab, we have already done this step_. Click on the Configuration Details to begin the setup process. Within the integration, you can create any number of ‘jobs’ — configurations dictating which services, regions, and AWS accounts to collect from. This enables you to logically split your data into specific jobs and scrape any number of AWS accounts to better organize your data.
 
-Navigate to the Integrations Management view from the onboarding menu within Grafana Cloud and select the CloudWatch Metrics integration.
+**Dashboards**
+The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system.
+1. Click the VIEW DASHBOARDS button to see available dashboards.
+   <img width="1405" alt="Screenshot 2023-10-20 at 8 08 24 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/1727f156-3e84-4cd4-876a-1528b8f9f331">
+2. Choose a dashboard, lets start with EC2.
+   <img width="1377" alt="Screenshot 2023-10-20 at 8 09 30 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/86f55394-0fbe-4c21-b786-9960658695f1">
 
-Within the integration, you can create any number of ‘jobs’ — sets of configuration dictating which services, regions, and AWS account to collect from. This enables you to logically split your data into specific jobs and scrape any number of AWS accounts to better organize your data.
+This is what your EC2 dashboard should look like. 
+<img width="1649" alt="Screenshot 2023-10-20 at 8 14 09 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/992fa689-b4bd-4839-9f4e-c28f440bd8ff">
 
-As part of creating a job, Grafana needs to be granted access to the CloudWatch data available in your account. To do so, we leverage AWS Account delegation, which enables Grafana to assume a role that can access only your CloudWatch data without the need to share access and secret keys. (If you want to take a further look into how this works, check out this documentation.)
-
-To set up the account delegation, you can leverage one of the provided infrastructure-as-code solutions: CloudFormation and Terraform. We recommend choosing the one that fits into your existing setup, as they not only automate the process but also enable you to keep track of the resources created. If, however, you do not wish to use CloudFormation or Terraform, simply choose ‘manually,’ which provides the details on how to configure account delegation manually.
-
-Once done, test the connection to ensure everything is configured correctly!
-
-Give the job a name and choose from the available services to begin scraping. All resources of the selected services that are tagged will automatically be scraped using tag auto discovery.
-
-Finally, click Create to submit the scrape job. At this point Grafana will now begin importing your CloudWatch metrics into Prometheus!
-
-## Dashboards
-The AWS Integration ships with prebuilt dashboards for 6 Services, once you are set-up and you can access those dashboards by clicking on the view dashboards button. 
-<screenshot>
-
-Then click the dashboard you would like to see. 
-<screenshot>
-
-## Now, let's see how this works with the Grafana Agent
-Next, we’ll use the Grafana Agent to collect and send metrics to our Grafana Cloud instance. 
-The Grafana Agent is a telemetry collector that allows you to send metrics, logs, and traces to your Grafana stack with just one YAML file. 
-There are a number of different ways to collect data from an ECS or EKS cluster with the Grafana Agent. 
-When specifically collecting metrics from ECS, it can be deployed as a sidecar, in your ECS instance directly, or as an ECS task. 
-Additionally, following the sidecar method, you can add the AWS Distribution for Open Telemetry sidecar container to your task definition in ECS.
-
-Once your Grafana account is running, install the Grafana Agent in a sidecar on your Fargate cluster. 
-
-Once you have configured your Grafana Agent YAML file, the agent will send metrics, logs, and traces to your Grafana stack, so you don’t have to worry about any additional steps or configuration choices.
-We have pre-deployed a Grafana Agent with this configuration in this environment.
-
-#Contextual layouts and visualizations
-Import Dashboard <>. 
-
-Choose the following Datasources:
-- screenshot 
-<Cloudwatch>
-<Prometheus>
-
-You will now see the metrics we are scraping from Lab2 plus Cloudwatch plugin data from Lab1. 
-<screenshot>
-When navigating through this dashboard, users can deep dive into specific ECS clusters that may be having issues and correlate that data across other serverless services such as Lambda. 
-For example, you can see which pods in the cluster utilize the most CPU and if the linked Lambda function is impacted. 
-Allowing you to get to the root cause of an issue quicker with a seamless, correlated view of the environment. 
-You can deep dive into service-specific dashboards included as part of the AWS Cloudwatch Integration that we configured as part of Lab2. 
-
-
-#summary
+3. Take one of the panels from your dashboard into explore mode by clicking the three dots in the upper right-hand corner.
+<img width="858" alt="Screenshot 2023-10-20 at 8 22 50 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/6f20f34e-af48-4185-9c9b-d6862bf2b24a">
+   
+4. Now you can see the underlying query that makes up this panel - this is PromQL! 
+<img width="1664" alt="Screenshot 2023-10-20 at 8 23 00 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/c6ef9520-f5fd-44df-ac05-7c1e7bed8328">
