@@ -54,7 +54,7 @@ In this lab you will create a new dashbaord and add a few panels to a dashboard 
 
 ![Settings](images/settings.png)
 
-```Step 4:``` Replace the field Name with "Recommendations Service - <Your Name>"
+```Step 4:``` Replace the field Name with "Recommendations Service - {Your Name}"
 
 ```Step 5:``` Click 'Save dashboard' on the top right hand corner
 
@@ -69,38 +69,56 @@ If this is your first time using Grafana to create a dashboard [this guide](./pa
 
 ```Step 2:``` Select *Cloudwatch* as the Data source
 
-```Step 3:``` Then Select *AWS/Lambda* for your Namespace, *Invocations* as your Metric name, and *Sum* as your Statistic
-
-```Step 4:``` Distinguish between successful, failed, and throttled invocations using colors. To do so click on the small color box next to each label on the axis. Set Invocations to Purple, Set Errors to Red, and set Throttles to Yellow.
-
-![color](images/color.png)
-
-```Step 5:``` On the right hand side ensure that the graph is set to Time series, if not click the drop down and select it.
-
-![timeseries](images/timeseries.png)
-
-```Step 6:``` On the right hand side change the Title of the graph to be "Lambda Invocations".
-
-```Step 7:``` In the search bar type in "Line Width" and change the value to 2 
-
-*[Click here](https://play.grafana.org/d/000000016/1-time-series-graphs?orgId=1) for inspiration on the modifications you can make to the timeseries panel.*
-
-```Step 8:``` Press `save` and then press 'apply'
-
-### Part 4: Add a Panel to Lambda Error Rate
-In this graph we will explore how you can show the error rate as a stat panel for easy viewing.
-
-```Step 1:``` Add another panel to the dashboard
-
-```Step 2:``` Select *CloudWatch* as the data source
-
-```Step 3:``` Select *AWS/Lambda* for your Namespace, *Invocations* as your Metric name, and *Sum* as your Statistic
+```Step 3:``` Select: 
+    - *AWS/Lambda* for your Namespace
+    - *Invocations* as your Metric name
+    - *Sum* as your Statistic
+    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
 
 ```Step 4:``` Scroll down and click `+ add query`
 
 ![addquery](images/addquery.png)
 
-```Step 5:``` Select *AWS/Lambda* for your Namespace, *Errors* as your Metric name, and *Sum* as your Statistic
+```Step 5:``` Select: 
+    - *AWS/Lambda* for your Namespace
+    - *Errors* as your Metric name
+    - *Sum* as your Statistic
+    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
+
+```Step 6:``` On the right hand side ensure that the graph is set to 'Time series', if not click the drop down and select it.
+
+![timeseries](images/timeseries.png)
+
+```Step 7:``` On the right hand side change the Title of the graph to be "Total Invocations".
+
+```Step 8:``` In the search bar type in "Line Width" and change the value to 2 
+
+*[Click here](https://play.grafana.org/d/000000016/1-time-series-graphs?orgId=1) for inspiration on the modifications you can make to the timeseries panel.*
+
+```Step 9:``` Press `Save` and then press 'Apply'
+
+### Part 4: Add a Panel to Lambda Error Rate
+In this graph we will explore how you can show the error rate as a stat panel for easy viewing.
+
+```Step 1:``` Click 'Add' -> 'Visualization'
+
+```Step 2:``` Select *Cloudwatch* as the Data source
+
+```Step 3:``` Select: 
+    - *AWS/Lambda* for your Namespace
+    - *Invocations* as your Metric name
+    - *Sum* as your Statistic
+    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
+
+```Step 4:``` Scroll down and click `+ add query`
+
+![addquery](images/addquery.png)
+
+```Step 5:``` Select: 
+    - *AWS/Lambda* for your Namespace
+    - *Errors* as your Metric name
+    - *Sum* as your Statistic
+    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
 
 ```Step 6:``` Scroll down and click add '+ expression'
 
@@ -120,24 +138,24 @@ In this graph we will explore how you can show the error rate as a stat panel fo
 
 ![errorrate](images/errorrate.png)
 
-```Step 12:``` On the right hand side set the graph type to be Stat panel
+```Step 12:``` On the right hand side set the graph type to be 'Stat panel'
 
-```Step 13:``` On the right hand side change the Title of the graph to be "Lambda Controller Error Rates".
+```Step 13:``` On the right hand side change the Title of the graph to be "Lambda Controller Error Rate".
 
 *[Click here](https://play.grafana.org/d/Zb3f4veGk/2-stats?orgId=1) for inspiration on the modifications you can make to the stat panel.*
 
-```Step 14:``` Press 'save' and then press 'apply'
+```Step 14:``` Press 'Save' and then press 'Apply'
 
 ### Part 5: Add a Panel to Show Error Logs
 In this part we will show you one option for presenting log data on a dashboard.
 
-```Step 1:``` Add your final panel
+```Step 1:``` Click 'Add' -> 'Visualization'
 
 ```Step 2:``` Choose *CloudWatch*
 
 ```Step 3:``` Change the drop down from 'Cloudwatch Metrics' to 'Cloudwatch Logs'
 
-```Step 4:``` Select the log group for 'BeeAnalysisStack'
+```Step 4:``` Select the log group for 'getRecommendations'
 
 ![logs](images/logs.png)
 
