@@ -217,17 +217,17 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ![ds3](images/ds3.png)
 
-```Step 3:``` Set *Region* to 'us-east-2'
-
-![reg3](images/reg3.png)
-
-```Step 4:``` Change the drop down from *Cloudwatch Metrics* to *Cloudwatch Logs*
+```Step 3:``` Change the drop down from *Cloudwatch Metrics* to *Cloudwatch Logs*
 
 ![cwp3](images/cwp3.png)
 
+```Step 4:``` Set *Region* to 'us-east-2'
+
+![reg3](images/reg3.png)
+
 ```Step 5:``` Click **Select log group**
 
-![logg](images/loggg.png)
+![panel3logs](images/panel3logs.png)
 
 ```Step 6:``` Select the log group 'getRecommendations' and Click **Add log groups**
 
