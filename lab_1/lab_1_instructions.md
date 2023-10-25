@@ -80,8 +80,6 @@ In this part, you'll learn how to create and set up a new Grafana dashboard. A G
 ### Part 3: Configure Your First Panel to Visualize Lambda Invocations
 Visualizing AWS Lambda invocations in Grafana provides critical insights into the usage patterns, performance, and cost of your Recommendations Service. Monitoring Lambda invocations helps identify abnormal traffic patterns, optimize costs, and ensure your service is running smoothly. Now, let's set up a panel to track and analyze these invocations.
 
-
-
 ```Step 1:``` Click **Add** -> **Visualization**
 
 ![Add Visualization](images/addvis.png)
@@ -318,6 +316,8 @@ fields @timestamp, @message, xrayTraceId as @xrayTraceId
 ![Apply](images/apply.png)
 
 Now what you will see are all of the error logs associated with this particular log group. This is a great way to quickly see what errors are occuring in your system. As well if you expand out the errors you will see links that will take you directly to the AWS X-Ray trace for that particular error or to the AWS CloudWatch Console.
+
+This linking between log and the corresponding trace happens automatically if the the log line contains the [@xrayTraceId field](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#x-ray-trace-links).
 
 ![links](images/mainss.png)
 ![trace](images/trace4.png)
