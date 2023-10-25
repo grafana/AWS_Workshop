@@ -193,7 +193,7 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![errorrate](images/errorrate2.png)
 
-```Step 12:``` On the right hand side change the *Title* of the graph to be 'Recommendation Lambda Error Rate'.
+```Step 12:``` On the right hand side change the *Title* of the graph to be 'Lambda Error Rate'.
 
 ![title2](images/title2.png)
 
@@ -201,9 +201,9 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![unit](images/unit3.png)
 
-```Step 14:``` Set *Unit* to **Percent (0-100)**
+```Step 14:``` Set *Unit* to **Percent (0.0-1.0)**
 
-![perc](images/perc.png)
+![perc](images/perc7.png)
 
 ```Step 14:``` Search for 'Thresholds' field. Set the *Thresholds mode* to **Percentage**
 
@@ -251,8 +251,8 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ```Step 7:``` Input in the query box 
 ```sql
-fields @timestamp, @message, @xrayTraceId
-| filter @message like /ERROR/
+fields @timestamp, @message, xrayTraceId as @xrayTraceId
+| filter level = "ERROR"
 | sort @timestamp desc
 | limit 20
 ```
