@@ -209,7 +209,7 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![perc](images/thres4.png)
 
-```Step 15:``` Set for 'Thresholds' field. Change the value next to the red dot to be 5
+```Step 15:``` Set for 'Thresholds' field. Change the value next to the red dot to '5'
 
 ![perc](images/thres5.png)
 
