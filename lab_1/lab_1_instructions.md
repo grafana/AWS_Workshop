@@ -269,8 +269,8 @@ fields @timestamp, @message, xrayTraceId as @xrayTraceId
 
 Now what you will see are all of the error logs associated with this particular log group. This is a great way to quickly see what errors are occuring in your system. As well if you expand out the errors you will see links that will take you directly to the AWS X-Ray trace for that particular error or to the AWS CloudWatch Console.
 
-![links](images/links.png)
-![trace](images/trace.png)
+![links](images/link3.png)
+![trace](images/trace3.png)
 
 ## Conclusion/Next Steps
 
