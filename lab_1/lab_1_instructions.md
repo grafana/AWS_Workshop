@@ -38,12 +38,16 @@ You are a part of the DevOps/SRE team at FictionTech, which is in charge of over
 ### Part 1: Access Grafana Cloud Environment
 For this workshop, a preconfigured Grafana Cloud stack is provided. Let's start by ensuring you can successfully log in to the instance.
 
-```Step 1:``` Log into your Grafana instance by going to the Grafana website using URL, login and password credentials you were sent via email.
+```Step 1:``` Open your web browser and navigate to the Grafana instance URL that you were sent via email prior to the workshop
+
+```Step 2:``` Press the **Login** and enter the corresponding username and password
+
+```Step 3:``` Click **Sign in**
 
 ![Grafana Login Page](images/sign_in.png)
 
 ### Part 2: Creating a New Dashboard
-In this part, you'll learn how to create and set up a new Grafana dashboard. A Grafana Dashboard is comprised of multiple panels. Each panel needs at least one query from a datasource to display a visualization.
+In this part, you'll learn how to create and set up a new Grafana dashboard. A Grafana Dashboard is comprised of multiple panels. Each panel needs at least one query from a datasource to display a visualization. To learn more about Grafana's dashboarding capabilites [click here](https://grafana.com/docs/grafana/latest/fundamentals/dashboards-overview/).
 
 ```Step 1:``` In the upper left hand corner open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
 
