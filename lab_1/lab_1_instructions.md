@@ -36,7 +36,7 @@ You are a part of the DevOps/SRE team at FictionTech, which is in charge of over
 
 ## Lab Steps
 ### Part 1: Access Grafana Cloud Environment
-Note: a Grafana Cloud stack has been provisioned for you for this workshop. In this section we will validate that we can log into the instance.
+For this workshop, a preconfigured Grafana Cloud stack is provided. Let's start by ensuring you can successfully log in to the instance.
 
 ```Step 1:``` Log into your Grafana instance by going to the Grafana website using URL, login and password credentials you were sent via email.
 
