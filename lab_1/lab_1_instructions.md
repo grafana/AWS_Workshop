@@ -236,7 +236,7 @@ Next we will have the relevant error logs displayed on the dashboard.
 ```Step 7:``` Input in the query box 
 ```sql
 fields @timestamp, @message, @xrayTraceId
-| filter @message like /XRAY TraceId/ | filter @message like /ERROR/
+| filter @message like /ERROR/
 | sort @timestamp desc
 | limit 20
 ```
@@ -260,7 +260,7 @@ Now what you will see are all of the error logs associated with this particular 
 
 **Well done!** You've established a starting point for your organization to monitor the service performance. For additional dashboard ideas, [click here](./supplementary_information/visualization_ideas.md), and to explore different visualization styles within Grafana, [click here](./supplementary_information/visualization_inspiration.md). Once the dashboards are to your liking you may want to consider the following next steps to enhance your operation:
 
-- **Dashboard Refinement**: Work with your teams to identify any essential metrics or insights that might be missing, and adjust the dashboard accordingly. Ensure it meets the needs of all stakeholders.
+- **Dashboard Refinement**: Work with your teams to identify any essential metrics or insights that might be missing, and adjust the dashboard accordingly. Ensure it meets the needs of all stakeholders. [Click here](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/) to learn about dashboarding best practices.
 
 - **Testing**: Simulate high data rates or errors to verify the dashboard’s effectiveness in reflecting real-time issues.
 
