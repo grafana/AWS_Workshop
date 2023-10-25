@@ -206,26 +206,50 @@ We are referencing the first two queries in this expression. Dividing the error 
 ![Apply](images/apply.png)
 
 ### Part 5: Add a Panel to Show Error Logs
-In this part we will show you one option for presenting log data on a dashboard.
 
-```Step 1:``` Click 'Add' -> 'Visualization'
+Next we will have the relevant error logs displayed on the dashboard. 
 
-```Step 2:``` Choose *CloudWatch*
+```Step 1:``` Click **Add** -> **Visualization**
 
-```Step 3:``` Change the drop down from 'Cloudwatch Metrics' to 'Cloudwatch Logs'
+![addvis3](images/addvis3.png)
 
-```Step 4:``` Select the log group for 'getRecommendations'
+```Step 2:``` Select *CloudWatch* as your datasource
 
-![logs](images/logs.png)
+![ds3](images/ds3.png)
 
-```Step 5:``` Input in the query box 
+```Step 3:``` Set *Region* to 'us-east-2'
+
+![reg3](images/reg3.png)
+
+```Step 4:``` Change the drop down from *Cloudwatch Metrics* to *Cloudwatch Logs*
+
+![cwp3](images/cwp3.png)
+
+```Step 5:``` Click **Select log group**
+
+![logg](images/loggg.png)
+
+```Step 6:``` Select the log group 'getRecommendations' and Click **Add log groups**
+
+![logg](images/logg.png)
+
+```Step 7:``` Input in the query box 
 ```sql
-fields @timestamp, @message, @xrayTraceId | 
-filter @message like /ERROR/ | parse @message 'Failed' as cause |
- sort @timestamp desc |
- limit 20
+fields @timestamp, @message, @xrayTraceId
+| filter @message like /XRAY TraceId/ | filter @message like /ERROR/
+| sort @timestamp desc
+| limit 20
 ```
-```Step 6:``` On the right hand side set the graph type to be Log panel
+
+```Step 8:``` On the right hand side of the screen press the *visualization list selection dropdown* and select *Logs* for the visualization type
+
+![Vis Change](images/type3.png)
+
+```Step 9:``` On the right hand side change the *Title* of the graph to be "Error Logs".
+
+![elog3](images/elog3.png)
+
+```Step 10:``` Click **Save** and **Apply**
 
 Now what you will see are all of the error logs associated with this particular log group. This is a great way to quickly see what errors are occuring in your system. As well if you expand out the errors you will see links that will take you directly to the AWS X-Ray trace for that particular error or to the AWS CloudWatch Console.
 
