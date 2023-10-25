@@ -40,11 +40,11 @@ For this workshop, a preconfigured Grafana Cloud stack is provided. Let's start 
 
 ```Step 1:``` Open your web browser and navigate to the Grafana instance URL that you were sent via email prior to the workshop
 
-```Step 2:``` Press the **Login** and enter the corresponding username and password
-
-```Step 3:``` Click **Sign in**
+```Step 2:``` Press the **Sign in with Grafana.com** and enter the corresponding username and password
 
 ![Grafana Login Page](images/sign_in.png)
+
+```Step 3:``` Click **Sign in**
 
 ### Part 2: Creating a New Dashboard
 In this part, you'll learn how to create and set up a new Grafana dashboard. A Grafana Dashboard is comprised of multiple panels. Each panel needs at least one query from a datasource to display a visualization. To learn more about Grafana's dashboarding capabilites [click here](https://grafana.com/docs/grafana/latest/fundamentals/dashboards-overview/).
@@ -69,93 +69,139 @@ In this part, you'll learn how to create and set up a new Grafana dashboard. A G
 
 ![Save Dashboard](images/savedash.png)
 
+```Step 6:``` Click **Save** again
+
+![Save2](images/save2.png)
+    
+**Note**: When organizations have one Grafana and multiple teams, they often want the ability to both keep things separate and share dashboards. You can create a team of users and then set RBAC permissions on folders and dashboards, and down to the data source level if you’re using [Grafana Enterprise or Grafana Cloud](https://grafana.com/pricing/).
+
 ******Pro Tip**: Even though we are creating dashboards from scratch today, a good place to start when onboarding a new data source into grafana is our [community dashboard search](https://grafana.com/grafana/dashboards). There are over 5000 different example dashboards available. As well when utlizing Grafana Cloud some data sources come with example dashboards out of the box. For instance for AWS Cloudwatch it has 5 dashboards available out of the box you can [optionally import](https://grafana.com/grafana/dashboards).*
 
-### Part 3: Add a Panel to Show Lambda Invocation Status
-Knowing the success rate of your Lambda functions provides a clear picture of the health of your processing component. A high failure or throttle rate may indicate issues that need immediate attention. In this graph we are going to visualize the invocation over time graphed with throttle events and errors.
+### Part 3: Configure Your First Panel to Visualize Lambda Invocations
+Visualizing AWS Lambda invocations in Grafana provides critical insights into the usage patterns, performance, and cost of your Recommendations Service. Monitoring Lambda invocations helps identify abnormal traffic patterns, optimize costs, and ensure your service is running smoothly. Now, let's set up a panel to track and analyze these invocations.
 
-If this is your first time using Grafana to create a dashboard [this guide](./supplementary_information/panel_walkthrough.md) will give you a brief overview of the panel UI. 
 
-```Step 1:``` Click 'Add' -> 'Visualization'
+
+```Step 1:``` Click **Add** -> **Visualization**
+
+![Add Visualization](images/addvis.png)
 
 ```Step 2:``` Select *Cloudwatch* as the Data source
 
-```Step 3:``` Select: 
-    - *AWS/Lambda* for your Namespace
-    - *Invocations* as your Metric name
-    - *Sum* as your Statistic
-    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
+![Cloudwatch](images/cw.png)
 
-```Step 4:``` Scroll down and click `+ add query`
+If this is your first time creating a Grafana dashboard [this guide](./supplementary_information/panel_walkthrough.md) will give you a brief walkthrough of the panel editing UI. 
 
-![addquery](images/addquery.png)
+```Step 3:``` Set up the query to fetch data on Lambda function invocations with the following parameters: 
+    - **Region**: Choose *us-east-2* as the AWS region
+    - **Namespace**: Enter *AWS/Lambda*
+    - **Metric Name**: Select *Invocations*
+    - **Dimensions**: Add *getRecommendations* as the Lambda function name
+    - **Stat**: Select *Sum* to aggregate the total invocations
 
-```Step 5:``` Select: 
-    - *AWS/Lambda* for your Namespace
-    - *Errors* as your Metric name
-    - *Sum* as your Statistic
-    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
+![Configure Datasource Panel](images/configcw.png)
 
-```Step 6:``` On the right hand side ensure that the graph is set to 'Time series', if not click the drop down and select it.
+```Step 4:``` Click **Run queries**
 
-![timeseries](images/timeseries.png)
+![Run Query](images/runq.png)
 
-```Step 7:``` On the right hand side change the Title of the graph to be "Total Invocations".
+```Step 5:``` On the right hand side of the screen press the *visualization list selection dropdown*
 
-```Step 8:``` In the search bar type in "Line Width" and change the value to 2 
+![Vis Change](images/openvis.png)
 
-*[Click here](https://play.grafana.org/d/000000016/1-time-series-graphs?orgId=1) for inspiration on the modifications you can make to the timeseries panel.*
+For more information about individual visualizations, refer to [Visualizations options](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/).
 
-```Step 9:``` Press `Save` and then press 'Apply'
+```Step 6:``` Select *Stat* for the visualization type
+
+![Stat Panel](images/statp.png)
+
+```Step 7:``` Press the **Refresh** button
+
+![Refresh](images/refresh.png)
+
+```Step 8:``` In the "Panel" section on the right hand side of the screen, change the **Title** panel of the panel to "Lambda Invocations"
+
+![Title Change](images/titlechange.png)
+
+```Step 9:``` Click `Save`
+
+![Save Panel](images/savepanel.png)
+
+```Step 10:``` Click 'Apply'
+
+![Apply](images/apply.png)
+
+**Note**: These panels are highly customizable. [Click here](https://play.grafana.org/d/Zb3f4veGk/2-stats?orgId=1) to see some customized stat panel examples.
 
 ### Part 4: Add a Panel to Lambda Error Rate
-In this graph we will explore how you can show the error rate as a stat panel for easy viewing.
+The next panel we create will show our Lambda Error Rate.
 
-```Step 1:``` Click 'Add' -> 'Visualization'
+```Step 1:``` Hover over the upper right hand side edge of the *Lambda Invocation panel* and click the 3 dot icon.
 
-```Step 2:``` Select *Cloudwatch* as the Data source
+![hover](images/hover.png)
 
-```Step 3:``` Select: 
-    - *AWS/Lambda* for your Namespace
-    - *Invocations* as your Metric name
-    - *Sum* as your Statistic
-    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
+```Step 2:``` Click **More** -> **Duplicate**
 
-```Step 4:``` Scroll down and click `+ add query`
+![duplicate](images/dup.png)
+
+```Step 3:``` Hover over the upper right hand side edge of one of the *Lambda Invocation panel* and click the 3 dot icon. 
+
+![hover](images/hoover.png)
+
+```Step 4:``` Select **Edit**
+
+![edit panel](images/edit2.png)
+
+```Step 5:``` In the Datasource configuration section scroll down and click **+ add query**
 
 ![addquery](images/addquery.png)
 
-```Step 5:``` Select: 
-    - *AWS/Lambda* for your Namespace
-    - *Errors* as your Metric name
-    - *Sum* as your Statistic
-    - For Dimensions select *FunctionName* and set it equal to *getRecommendations*
+```Step 5:``` Set up the query to fetch data on Lambda function invocations with the following parameters: 
+    - **Region**: Choose *us-east-2* as the AWS region
+    - **Namespace**: Enter *AWS/Lambda*
+    - **Metric Name**: Select *Errors*
+    - **Dimensions**: Add *getRecommendations* as the Lambda function name
+    - **Stat**: Select *Sum* to aggregate the total invocations
 
-```Step 6:``` Scroll down and click add '+ expression'
+![panel2](images/panel2.png)
 
-```Step 7:``` Set the operation to *Math* and the expression to "$A/$B"
+```Step 6:``` Scroll down and click add **+ expression**
 
-![expression](images/expression.png)
+![exp](images/exp.png)
 
-```Step 8:``` For the first two queries hit the 'eye' icon to hide the query
+```Step 7:``` Set the operation to *Math* and the expression to **$B/$A**
+
+We are referencing the first two queries in this expression. Dividing the error count over the number of invocations.
+
+![expression](images/exp2.png)
+
+```Step 8:``` For the first two queries hit the **eye** icon to hide the query
 
 ![hide](images/hide.png)
 
-```Step 9:``` Click the 'Transform' tab
+```Step 9:``` Click the **Transform** tab
+
+![transformtab](images/transformtab.png)
 
 ```Step 10:``` Click the drop down and select 'Organize fields'
+
+![orgfield](images/orgfield.png)
 
 ```Step 11:``` Change the name of the non time field to "Error Rate"
 
 ![errorrate](images/errorrate.png)
 
-```Step 12:``` On the right hand side set the graph type to be 'Stat panel'
+```Step 12:``` On the right hand side change the **Title** of the graph to be "Recommendation Lambda Error Rate".
 
-```Step 13:``` On the right hand side change the Title of the graph to be "Lambda Controller Error Rate".
+![title2](images/title2.png)
 
-*[Click here](https://play.grafana.org/d/Zb3f4veGk/2-stats?orgId=1) for inspiration on the modifications you can make to the stat panel.*
+```Step 13:``` Click `Save`
 
-```Step 14:``` Press 'Save' and then press 'Apply'
+![Save Panel](images/savepanel.png)
+
+```Step 14:``` Click 'Apply'
+
+![Apply](images/apply.png)
 
 ### Part 5: Add a Panel to Show Error Logs
 In this part we will show you one option for presenting log data on a dashboard.
