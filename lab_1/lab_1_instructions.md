@@ -42,26 +42,28 @@ For this workshop, a preconfigured Grafana Cloud stack is provided. Let's start 
 
 ![Grafana Login Page](images/sign_in.png)
 
-### Part 2: Creating a new Dashboard
-In this lab you will create a new dashbaord and add a few panels to a dashboard that will provide a high-level overview of useful metrics that define the health and performance of the recommendations service.
+### Part 2: Creating a New Dashboard
+In this part, you'll learn how to create and set up a new Grafana dashboard. A Grafana Dashboard is comprised of multiple panels. Each panel needs at least one query from a datasource to display a visualization.
 
-```Step 1:``` In the upper left hand corner open up the Menu Bar by clicking on the Icon next to the word 'Home' -> 'Dashboards'
+```Step 1:``` In the upper left hand corner open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
 
 ![Grafana Menu Navigation](images/menu_nav.png)
 
-```Step 2:``` On the dashboard home page click 'New' -> 'New Dashboard'
+```Step 2:``` On the dashboard home page click **New** -> **New Dashboard**
 
 ![New Dashboard](images/new_dash.png)
 
-```Step 3:``` In the dashboard on the upper right hand corner click on the 'Gear' button
+```Step 3:``` In the dashboard on the upper right hand corner click on the **Settings** button
 
 ![Settings](images/settings.png)
 
-```Step 4:``` Replace the field Name with "Recommendations Service - {Your Name}"
+```Step 4:``` Replace the field Title with "Recommendations Service - {Your Name}"
 
-```Step 5:``` Click 'Save dashboard' on the top right hand corner
+![Change Title](images/changetitle.png)
 
-****Pro Tip: Even though we are creating dashboards from scratch today, a good place to start when onboarding a new data source into grafana is our [community dashboard search](https://grafana.com/grafana/dashboards). There are over 5000 different example dashboards available. As well when utlizing Grafana Cloud some data sources come with example dashboards out of the box. For instance for AWS Cloudwatch it has 5 dashboards available out of the box you can [optionally import](https://grafana.com/grafana/dashboards).*
+```Step 5:``` Click **Save dashboard** on the top right hand corner
+
+******Pro Tip**: Even though we are creating dashboards from scratch today, a good place to start when onboarding a new data source into grafana is our [community dashboard search](https://grafana.com/grafana/dashboards). There are over 5000 different example dashboards available. As well when utlizing Grafana Cloud some data sources come with example dashboards out of the box. For instance for AWS Cloudwatch it has 5 dashboards available out of the box you can [optionally import](https://grafana.com/grafana/dashboards).*
 
 ### Part 3: Add a Panel to Show Lambda Invocation Status
 Knowing the success rate of your Lambda functions provides a clear picture of the health of your processing component. A high failure or throttle rate may indicate issues that need immediate attention. In this graph we are going to visualize the invocation over time graphed with throttle events and errors.
