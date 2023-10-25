@@ -181,7 +181,7 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![hide](images/hideb.png)
 
-```Step 9:``` Click the **Transform** tab
+```Step 9:``` Click the **Transform data**
 
 ![transformtab](images/transformtab.png)
 
