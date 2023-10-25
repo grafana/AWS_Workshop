@@ -1,37 +1,38 @@
-# Breakout 1: Monitoring an AWS Data Pipeline with Grafana
+# Breakout 1: Observing AWS Workloads with Grafana, AWS CloudWatch, and AWS X-Ray
 
-## Duration
+## Introduction
 
-30 minutes
+Building on your introduction to observability and Grafana from the previous presentation, this lab offers a practical opportunity to apply your knowledge. In this lab you will dive deep into understanding how to utilize [Grafana plugins](./supplementary_information/plugin_basics.md) to visualize data that is being stored in AWS today without having to move or duplicate the data. 
+
+The Grafana Plugins that will be used in the first lab today are:
+
+- [Amazon CloudWatch](https://grafana.com/grafana/plugins/cloudwatch/): Collects monitoring data, providing a holistic view of AWS resources, applications, and services, supporting setup of alarms, logs and metrics visualization, and automated troubleshooting actions.
+
+- [AWS X-Ray](https://grafana.com/grafana/plugins/grafana-x-ray-datasource/): A tracing service enabling application analysis and debugging, illuminating user journeys across distributed system components.
 
 ## Prerequisites
 
-1. Access to a pre-configured Grafana instance connected to AWS data sources (e.g., AWS CloudWatch, AWS X-Ray).
-2. Basic knowledge of AWS services.
+- Ensure you have received your Grafana Cloud login details via email. Contact a Grafana Labs team member if you haven't.
 
-## Background
+## Objectives
 
-You're on the DevOps/SRE team at FictionTech, responsible for a monitoring the new recommendations service for the companies website. The goal of the recommendations service is to help boost customer engagement and sales by providing personalized product suggestions in real-time. Below you will see the architecture of the recommendations service you have been tasked to monitor.
+By the end of this lab, you will be able to:
+
+- Create a Grafana dashboard.
+- Add and configure panels to visualize data from the Amazon CloudWatch and AWS X-Ray plugins.
+
+## Scenario
+
+You are a part of the DevOps/SRE team at FictionTech, which is in charge of overseeing a recommendations service integrated within the company’s website. This service aims to increase user engagement and sales by providing real-time, tailored product recommendations. You have been tasked with creating a dashboard to help the teams better understand this application's performance. Below is the architectural breakdown of the recommendations service:
 
 ![Architecture Diagram](images/arch1.png)
 
-1. **User Request**: Initiated from various sources such as an email list serv, the website, or another application.
-2. **API Gateway**: Receives the request and routes it to the appropriate AWS Lambda function.
-3. **AWS Lambda**: Executes business logic which includes:
-   - Storing information in DynamoDB.
-   - Optionally, making an API call to a third-party recommendations ML model based on certain conditions.
-4. **DynamoDB**: Acts as the database to store and retrieve information as needed.
-5. **Third-Party Recommendations ML Model**: Provides personalized recommendations based on the data received.
-6. **Response**: The results from DynamoDB or the recommendations model are sent back to the user through the Lambda function and API Gateway.
-
-## Lab Objective
-The goal of this lab is to create a Grafana dashboard that provides comprehensive monitoring of the recommendations service. You will leverage two pre-configured data sources:
-
-- [AWS CloudWatch](https://grafana.com/grafana/plugins/cloudwatch/) - a service that collects monitoring data, offering a comprehensive view of AWS resources, applications, and services. CloudWatch facilitates the setup of alarms, visualization of logs and metrics, and automated troubleshooting actions.
-
-- [AWS X-Ray](https://grafana.com/grafana/plugins/grafana-x-ray-datasource/) - a tracing service that enables analysis and debugging of applications, highlighting user journeys across distributed components.
-
-[Click here](./plugin_basics.md) if you want to learn more about Grafana plugins. Remember plugins do not force you to move your data instead they allow you to query the data without moving it. 
+1. **User Request**: Initiated from multiple sources including email listservs, the website, or other applications.
+2. **Amazon API Gateway**: Receives requests, redirecting them to the appropriate AWS Lambda function.
+3. **AWS Lambda**: Performs business logic, which entails storing data in DynamoDB and, under certain conditions, making API calls to a third-party recommendations ML model.
+4. **Amazon DynamoDB**: Functions as the database for data storage and retrieval.
+5. **Third-Party Recommendations ML Model**: Produces personalized product suggestions based on the received data.
+6. **Response**: Outputs from DynamoDB or the recommendations ML model are returned to the user via the Lambda function and API Gateway.
 
 ## Lab Steps
 ### Part 1: Access Grafana Cloud Environment
@@ -63,7 +64,7 @@ In this lab you will create a new dashbaord and add a few panels to a dashboard 
 ### Part 3: Add a Panel to Show Lambda Invocation Status
 Knowing the success rate of your Lambda functions provides a clear picture of the health of your processing component. A high failure or throttle rate may indicate issues that need immediate attention. In this graph we are going to visualize the invocation over time graphed with throttle events and errors.
 
-If this is your first time using Grafana to create a dashboard [this guide](./panel_walkthrough.md) will give you a brief overview of the panel UI. 
+If this is your first time using Grafana to create a dashboard [this guide](./supplementary_information/panel_walkthrough.md) will give you a brief overview of the panel UI. 
 
 ```Step 1:``` Click 'Add' -> 'Visualization'
 
@@ -174,16 +175,15 @@ Now what you will see are all of the error logs associated with this particular 
 ![trace](images/trace.png)
 
 ## Conclusion/Next Steps
-**Congratulations!** You've built a starting point for you organzation to better understand your service's performance. [Click here](./visualization_ideas.md) to get more ideas of what might be useful to add to this dashboard... [Click here](./visualization_inspiration.md) to see different styling attached to various visualizations within the Grafana UI. Once the dashboards are to your liking you may want to consider the following next steps to enhance your operation:
 
-- *Dashboard Refinement* - Collaborate with your teams to identify any missing critical metrics or insights. Tailor the dashboard based on feedback. While this is a suggested breakdown for lab purposes, it's essential to collaborate with stakeholders from each persona to ensure the dashboards meet their needs. Periodic reviews and refinements based on feedback can help maintain the dashboards' relevance over time.
+**Well done!** You've established a starting point for your organization to monitor the service performance. For additional dashboard ideas, [click here](./supplementary_information/visualization_ideas.md), and to explore different visualization styles within Grafana, [click here](./supplementary_information/visualization_inspiration.md). Once the dashboards are to your liking you may want to consider the following next steps to enhance your operation:
 
-- *Testing* - Introduce scenarios with high data rates or simulated errors to ensure the dashboard reflects real-time issues effectively.
+- **Dashboard Refinement**: Work with your teams to identify any essential metrics or insights that might be missing, and adjust the dashboard accordingly. Ensure it meets the needs of all stakeholders.
 
-- *Granular Alerting* - Utilize [Grafana's Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/) to establish alert conditions, especially those spanning multiple data sources. This reduces the need for constant dashboard monitoring. As well allows you to get a more holistic view of potential issues. [Click here](./alerting_ideas.md) to get ideas for example alerts. [Click here](https://grafana.com/docs/grafana/latest/alerting/set-up/) if you want to learn how to configure an alerts.
+- **Testing**: Simulate high data rates or errors to verify the dashboard’s effectiveness in reflecting real-time issues.
 
-- *Performance Optimization* - Use monitoring insights to optimize the service's performance. Identify bottlenecks and rectify them.
+- **Granular Alerting** - Utilize [Grafana's Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/) to establish alert conditions, especially those spanning multiple data sources. This reduces the need for constant dashboard monitoring. As well allows you to get a more holistic view of potential issues. [Click here](./supplementary_information/alerting_ideas.md) to get ideas for example alerts. [Click here](https://grafana.com/docs/grafana/latest/alerting/set-up/) if you want to learn how to configure an alerts.
 
-- *Documentation* - Draft a guide that explains the significance of each metric and includes a troubleshooting section for common  challenges. For each dashboard, include an "About This Dashboard" or "Dashboard Guide" section. This section briefly explains the purpose of the dashboard, describes the key metrics, and provides guidance on how to interpret them. It can be especially valuable for newcomers or occasional visitors.
+- **Performance Optimization** - Use monitoring insights to optimize the service's performance. Identify bottlenecks and rectify them.
 
-- *Feedback Loop* - Collaborate with teams, especially data analysts, to ensure the dashboard remains relevant and actionable. Adapt it based on their feedback. 
+- **Feedback Loop**: Maintain regular communication with teams using this dashboard, to ensure the dashboard stays relevant and actionable, adjusting it based on their feedback.
