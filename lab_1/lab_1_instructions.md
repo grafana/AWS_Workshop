@@ -67,6 +67,8 @@ In this part, you'll learn how to create and set up a new Grafana dashboard. A G
 
 ```Step 5:``` Click **Save dashboard** on the top right hand corner
 
+![Save Dashboard](images/savedash.png)
+
 ******Pro Tip**: Even though we are creating dashboards from scratch today, a good place to start when onboarding a new data source into grafana is our [community dashboard search](https://grafana.com/grafana/dashboards). There are over 5000 different example dashboards available. As well when utlizing Grafana Cloud some data sources come with example dashboards out of the box. For instance for AWS Cloudwatch it has 5 dashboards available out of the box you can [optionally import](https://grafana.com/grafana/dashboards).*
 
 ### Part 3: Add a Panel to Show Lambda Invocation Status
