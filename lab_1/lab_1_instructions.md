@@ -249,7 +249,7 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below.
 
-![Refresh](images/refresh.png)
+![Refresh](images/refreshsm.png)
 
 ![Refresh](images/refreshg.png)
 
