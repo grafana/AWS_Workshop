@@ -189,7 +189,7 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ```Step 11:``` Change the name of the non time field to "Error Rate"
 
-![errorrate](images/errorrate.png)
+![errorrate](images/errorrate2.png)
 
 ```Step 12:``` On the right hand side change the **Title** of the graph to be "Recommendation Lambda Error Rate".
 
