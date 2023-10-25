@@ -197,11 +197,27 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![title2](images/title2.png)
 
-```Step 13:``` Click **Save**
+```Step 13:``` Type in 'Unit' in the *Search options* box
+
+![unit](images/unit3.png)
+
+```Step 14:``` Set *Unit* to **Percent (0-100)**
+
+![perc](images/perc.png)
+
+```Step 14:``` Search for 'Thresholds' field. Set the *Thresholds mode* to **Percentage**
+
+![perc](images/thres4.png)
+
+```Step 15:``` Set for 'Thresholds' field. Change the value next to the red dot to be 5
+
+![perc](images/thres5.png)
+
+```Step 16:``` Click **Save**
 
 ![Save Panel](images/savepanel.png)
 
-```Step 14:``` Click **Apply**
+```Step 17:``` Click **Apply**
 
 ![Apply](images/apply.png)
 
