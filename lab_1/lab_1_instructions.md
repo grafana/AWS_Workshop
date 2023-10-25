@@ -61,7 +61,7 @@ In this part, you'll learn how to create and set up a new Grafana dashboard. A G
 
 ![Settings](images/settings.png)
 
-```Step 4:``` Replace the field Title with "Recommendations Service - {Your Name}"
+```Step 4:``` Replace the field Title with 'Recommendations Service - {Your Name}'
 
 ![Change Title](images/changetitle.png)
 
@@ -119,7 +119,7 @@ For more information about individual visualizations, refer to [Visualizations o
 
 ![Refresh](images/refresh.png)
 
-```Step 8:``` On the right hand side of the screen, set the *Title* to "Lambda Invocations"
+```Step 8:``` On the right hand side of the screen, set the *Title* to 'Lambda Invocations'
 
 ![Title Change](images/titlechange.png)
 
@@ -189,11 +189,11 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![orgfield](images/orgfield.png)
 
-```Step 11:``` Change the name of the non-time field to "Error Rate"
+```Step 11:``` Change the name of the non-time field to 'Error Rate'
 
 ![errorrate](images/errorrate2.png)
 
-```Step 12:``` On the right hand side change the *Title* of the graph to be "Recommendation Lambda Error Rate".
+```Step 12:``` On the right hand side change the *Title* of the graph to be 'Recommendation Lambda Error Rate'.
 
 ![title2](images/title2.png)
 
@@ -245,7 +245,7 @@ fields @timestamp, @message, @xrayTraceId
 
 ![Vis Change](images/type3.png)
 
-```Step 9:``` On the right hand side change the *Title* of the graph to be "Error Logs".
+```Step 9:``` On the right hand side change the *Title* of the graph to be 'Error Logs'.
 
 ![elog3](images/elog3.png)
 
