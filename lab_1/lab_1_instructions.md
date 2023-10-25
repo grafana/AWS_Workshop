@@ -179,7 +179,7 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![hide](images/hidea.png)
 
-![hide](images/hide.png)
+![hide](images/hideb.png)
 
 ```Step 9:``` Click the **Transform** tab
 
