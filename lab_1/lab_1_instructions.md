@@ -119,15 +119,15 @@ For more information about individual visualizations, refer to [Visualizations o
 
 ![Refresh](images/refresh.png)
 
-```Step 8:``` In the "Panel" section on the right hand side of the screen, change the **Title** panel of the panel to "Lambda Invocations"
+```Step 8:``` On the right hand side of the screen, set the *Title* to "Lambda Invocations"
 
 ![Title Change](images/titlechange.png)
 
-```Step 9:``` Click `Save`
+```Step 9:``` Click **Save**
 
 ![Save Panel](images/savepanel.png)
 
-```Step 10:``` Click 'Apply'
+```Step 10:``` Click **Apply**
 
 ![Apply](images/apply.png)
 
@@ -185,23 +185,23 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![transformtab](images/transformtab.png)
 
-```Step 10:``` Click the drop down and select 'Organize fields'
+```Step 10:``` Find and select **Organize fields**
 
 ![orgfield](images/orgfield.png)
 
-```Step 11:``` Change the name of the non time field to "Error Rate"
+```Step 11:``` Change the name of the non-time field to "Error Rate"
 
 ![errorrate](images/errorrate2.png)
 
-```Step 12:``` On the right hand side change the **Title** of the graph to be "Recommendation Lambda Error Rate".
+```Step 12:``` On the right hand side change the *Title* of the graph to be "Recommendation Lambda Error Rate".
 
 ![title2](images/title2.png)
 
-```Step 13:``` Click `Save`
+```Step 13:``` Click **Save**
 
 ![Save Panel](images/savepanel.png)
 
-```Step 14:``` Click 'Apply'
+```Step 14:``` Click **Apply**
 
 ![Apply](images/apply.png)
 
