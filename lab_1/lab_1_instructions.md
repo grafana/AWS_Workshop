@@ -177,6 +177,8 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ```Step 8:``` For the first two queries hit the **eye** icon to hide the query
 
+![hide](images/hidea.png)
+
 ![hide](images/hide.png)
 
 ```Step 9:``` Click the **Transform** tab
