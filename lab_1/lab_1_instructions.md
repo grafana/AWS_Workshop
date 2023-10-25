@@ -221,7 +221,51 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![Apply](images/apply.png)
 
-### Part 5: Add a Panel to Show Error Logs
+### Part 5: Show X-Ray Service Map
+We will now add the service graph from X-Ray to our dashboard.
+
+Next we will have the relevant error logs displayed on the dashboard. 
+
+```Step 1:``` Click **Add** -> **Visualization**
+
+![addvis3](images/addvis3.png)
+
+```Step 2:``` Select *X-Ray* as your datasource
+
+![xray1](images/xray1.png)
+
+
+```Step 3:``` Click **Trace List** and select 'Service Map'
+
+![sm](images/sm.png)
+
+```Step 4:``` Set the *Region* to 'us-east-2' and *Group* to 'recommendation-service'.
+
+![xray2](images/xray5.png)
+
+```Step 5:``` On the right hand side of the screen press the *visualization list selection dropdown* and select *Node Graph* for the visualization type
+
+![Vis Change](images/ng.png)
+
+```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below.
+
+![Refresh](images/refresh.png)
+
+![Refresh](images/refreshg.png)
+
+```Step 9:``` On the right hand side change the *Title* of the graph to be 'Service Map'.
+
+![elog3](images/sm7.png)
+
+```Step 10:``` Click **Save**
+
+![Save Panel](images/savepanel.png)
+
+```Step 11:``` Click **Apply**
+
+![Apply](images/apply.png)
+
+### Part 6: Add a Panel to Show Error Logs
 
 Next we will have the relevant error logs displayed on the dashboard. 
 
@@ -265,7 +309,13 @@ fields @timestamp, @message, xrayTraceId as @xrayTraceId
 
 ![elog3](images/elog3.png)
 
-```Step 10:``` Click **Save** and **Apply**
+```Step 10:``` Click **Save**
+
+![Save Panel](images/savepanel.png)
+
+```Step 11:``` Click **Apply**
+
+![Apply](images/apply.png)
 
 Now what you will see are all of the error logs associated with this particular log group. This is a great way to quickly see what errors are occuring in your system. As well if you expand out the errors you will see links that will take you directly to the AWS X-Ray trace for that particular error or to the AWS CloudWatch Console.
 
