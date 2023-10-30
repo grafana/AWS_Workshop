@@ -187,6 +187,8 @@ The eye icon in Grafana is used to hide (or show) a specific query result on a p
 
 ![transformtab](images/transformtab.png)
 
+The Transform tab in Grafana enables users to manipulate and modify data returned from a data source before visualization. Users can perform a variety of transformations, such as aggregating data points, filtering values, combining multiple queries, and reformatting data structures. These capabilities allow for more flexible and tailored visualizations, helping users derive meaningful insights from their data. [Click here](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to learn more.
+
 ```Step 10:``` In the search box type in 'Organize' and then select the option **Organize fields**
 
 ![orgfield](images/orgfield.png)
