@@ -163,17 +163,21 @@ The next panel we create will show our Lambda Error Rate.
 
 ![panel2](images/panel2.png)
 
+The Errors metric in AWS Lambda tallies the number of invocations ending in error, aggregated per minute. This includes errors from unhandled exceptions in your code and Lambda runtime issues like timeouts and configuration problems. 
+
 ```Step 6:``` Scroll down and click add **+ expression**
 
 ![exp](images/exp.png)
 
 ```Step 7:``` Set the operation to *Math* and the expression to **$B/$A**
 
-We are referencing the first two queries in this expression. Dividing the error count over the number of invocations.
+In order to calculate the error rate we must divide Errors by Invocations. To achieve this with the CloudWatch plugin we are referencing the previous queries we ran. The first query we ran was for Invocations and the second query we ran was for Errors. The CloudWatch plugin references the queries by letter. So the first query is referenced by A and the second query is referenced by B.
 
 ![expression](images/exp2.png)
 
-```Step 8:``` For the first two queries hit the **eye** icon to hide the query
+```Step 8:``` For the first two queries hit the **eye** icon. 
+
+The eye icon in Grafana is used to hide (or show) a specific query result on a panel. Since the purpose of this panel is to show the error rate of the Lambda function we only want to show the last query in our panel and not the first 2.
 
 ![hide](images/hidea.png)
 
@@ -183,7 +187,7 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![transformtab](images/transformtab.png)
 
-```Step 10:``` Find and select **Organize fields**
+```Step 10:``` In the search box type in 'Organize' and then select the option **Organize fields**
 
 ![orgfield](images/orgfield.png)
 
@@ -199,9 +203,11 @@ We are referencing the first two queries in this expression. Dividing the error 
 
 ![unit](images/unit3.png)
 
-```Step 14:``` Set *Unit* to **Percent (0.0-1.0)**
+```Step 14:``` Set *Unit* to **Percent (0.0-1.0)**. 
 
 ![perc](images/perc7.png)
+
+Changing the unit on a Grafana panel affects how the data is displayed, making it easier to read and interpret. The unit does not change the underlying data; it only changes how the data is presented on the panel. In this case we changed it from the default number to percentage.
 
 ```Step 14:``` Search for 'Thresholds' field. Set the *Thresholds mode* to **Percentage**
 
@@ -291,7 +297,7 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ![logg](images/logg.png)
 
-```Step 7:``` Input in the query box 
+```Step 7:``` Replace the current query in the query box with the following query:
 ```sql
 fields @timestamp, @message, xrayTraceId as @xrayTraceId
 | filter level = "ERROR"
