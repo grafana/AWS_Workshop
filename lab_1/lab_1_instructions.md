@@ -17,10 +17,6 @@ By the end of this lab, you will be able to:
 - Create a Grafana dashboard.
 - Add and configure panels to visualize data from the Amazon CloudWatch and AWS X-Ray plugins.
 
-## Prerequisites
-
-- Ensure you have received your Grafana Cloud login details via email. Contact a Grafana Labs team member if you haven't.
-
 ## Scenario
 
 You are a part of the DevOps/SRE team at FictionTech, which is in charge of overseeing a recommendations service integrated within the company’s website. This service aims to increase user engagement and sales by providing real-time, tailored product recommendations. You have been tasked with creating a dashboard to help the teams better understand this application's performance. Below is the architectural breakdown of the recommendations service:
@@ -33,6 +29,9 @@ You are a part of the DevOps/SRE team at FictionTech, which is in charge of over
 4. **Amazon DynamoDB**: Functions as the database for data storage and retrieval.
 5. **Third-Party Recommendations ML Model**: Produces personalized product suggestions based on the received data.
 6. **Response**: Outputs from DynamoDB or the recommendations ML model are returned to the user via the Lambda function and API Gateway.
+
+## Prerequisites
+- Ensure you have received your Grafana Cloud login details via email. Contact a Grafana Labs team member if you haven't.
 
 ## Lab Steps
 ### Part 1: Access Grafana Cloud Environment
