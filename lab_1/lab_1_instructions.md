@@ -46,7 +46,9 @@ For this workshop, a preconfigured Grafana Cloud stack is provided. Let's start 
 ```Step 3:``` Click **Sign in**
 
 ### Part 2: Creating a New Dashboard
-In this part, you'll learn how to create and set up a new Grafana dashboard. A Grafana Dashboard is comprised of multiple panels. Each panel needs at least one query from a datasource to display a visualization. To learn more about Grafana's dashboarding capabilites [click here](https://grafana.com/docs/grafana/latest/fundamentals/dashboards-overview/).
+A dashboard gives you an at-a-glance view of your data and lets you track metrics through different visualizations. Dashboards consist of panels, each representing a part of the story you want your dashboard to tell. Every panel consists of a query and a visualization. The query defines what data you want to display, whereas the visualization defines how the data is displayed.
+
+In this part, you'll learn how to create and set up a new Grafana dashboard. To learn more about Grafana's dashboarding capabilites [click here](https://grafana.com/docs/grafana/latest/fundamentals/dashboards-overview/).
 
 ```Step 1:``` In the upper left hand corner open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
 
