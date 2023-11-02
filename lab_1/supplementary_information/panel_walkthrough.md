@@ -3,7 +3,7 @@ A Grafana panel is a visual representation of data that you can customize by def
 
 A panel editor includes a query builder and a series of options that you can use to transform data and add information to your panels.
 
-![Panel](images/panel.png)
+![Panel](../images/panel.png)
 
 1. (Red box) is where you will edit the actual data being used for the panel visualization. If you click on the [Transform](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) tab you will be able to manipulate the data that is being returned from the query before the system applies a visualization.
 
