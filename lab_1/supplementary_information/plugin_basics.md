@@ -1,7 +1,7 @@
 # Overview of Grafana Data Source Plugins
 Grafana [data source plugins](https://grafana.com/docs/grafana/latest/datasources/) do not force you to move your data instead they allow you to query the data without moving it. 
 
-![Plugin](images/plug.png)
+![Plugin](../images/plug.png)
 
 Grafana provides a rich selection of data source plugins that enable seamless connections to various databases, APIs, and cloud services. Some common ones we find people use with their AWS workloads include:
 
