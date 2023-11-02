@@ -10,16 +10,16 @@ The Grafana Plugins that will be used in the first lab today are:
 
 - [AWS X-Ray](https://grafana.com/grafana/plugins/grafana-x-ray-datasource/): A tracing service enabling application analysis and debugging, illuminating user journeys across distributed system components.
 
-## Prerequisites
-
-- Ensure you have received your Grafana Cloud login details via email. Contact a Grafana Labs team member if you haven't.
-
 ## Objectives
 
 By the end of this lab, you will be able to:
 
 - Create a Grafana dashboard.
 - Add and configure panels to visualize data from the Amazon CloudWatch and AWS X-Ray plugins.
+
+## Prerequisites
+
+- Ensure you have received your Grafana Cloud login details via email. Contact a Grafana Labs team member if you haven't.
 
 ## Scenario
 
