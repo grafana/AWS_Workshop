@@ -4,7 +4,7 @@
 
 Building on the concepts thus far, this lab provides a hands-on experience to explore various options for shipping telemetry data out of AWS to Grafana Cloud.
 
-In lab 1 we discussed the CloudWatch plugin, which enables you to query both metrics and logs straight from the CloudWatch API. If you're using AWS, you're almost certainly using Amazon CloudWatch to collect and analyze observability data from your workloads. And while AWS remains the most broadly adopted cloud platform, not every company uses it exclusively, which means you need a tool that can standarized and give you a centralized view across all your environments.
+In lab 1, we discussed the CloudWatch plugin, which enables you to query both metrics and logs straight from the CloudWatch API. If you're using AWS, you're almost certainly using Amazon CloudWatch to collect and analyze observability data from your workloads. And while AWS remains the most broadly adopted cloud platform, not every company uses it exclusively, which means you need a tool that can standarized and give you a centralized view across all your environments.
 
 In this lab, we will explore two popular options for shipping telemetry data out of AWS to Grafana. One being a fully managed option the other being through an open source agent you deploy and manage.
 
@@ -103,7 +103,7 @@ k8s app that calls this service...
 
 3. The Fargate portion of this dashboard includes data from the Grafana Agent and the lambda portion of the dashboard brings in data from the Cloudwatch plugin that we learned about earlier in the lab. Take a moment to explore the various panels in the dashboard!
 
-#Debug Workflow
+## Debug Workflow
 When reviewing the serverless dashboard, did you notice issues with our services?
 We are experiencing high errors in our lambda functions and a sudden spike in Pods running within our Fargate Clusters. 
 Lets step through and debug this. 
