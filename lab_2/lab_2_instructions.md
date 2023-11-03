@@ -74,7 +74,7 @@ Next choose a metric that is available for this label. All of these  metrics are
 
 3. The Fargate portion of this dashboard includes data from the Grafana Agent and the lambda portion of the dashboard brings in data from the Cloudwatch plugin that we learned about earlier in the lab. Take a moment to explore the various panels in the dashboard!
 
-#Debug Workflow
+## Debug Workflow
 When reviewing the serverless dashboard, did you notice issues with our services?
 We are experiencing high errors in our lambda functions and a sudden spike in Pods running within our Fargate Clusters. 
 Lets step through and debug this. 
