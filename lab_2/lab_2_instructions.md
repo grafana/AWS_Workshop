@@ -58,7 +58,7 @@ Next choose a metric that is available for this label. All of these  metrics are
 <img width="776" alt="Screenshot 2023-10-23 at 1 50 17 PM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/de2405bc-7462-4ec9-9e66-6548545cdaba">
 
 
-##So how do we put this to practical use?
+## So how do we put this to practical use?
 
 1. Navigate to Dashboards on your side menu.
 
