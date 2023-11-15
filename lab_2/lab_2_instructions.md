@@ -6,7 +6,7 @@ The goal of this lab is to guide you through visualizing and monitoring your sys
 
 As you have just learned there are two primary ways to send your Telemetry data from your AWS account to Grafana backends. One being via the direct installation of an agent on to your server (ie Amazon EC2 or Amazon EKS). The other option being to ship your data via the AWS Integration which lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without having to deploy or install any local agents or configurations.
 
-## Section 1: Ship from Infrastructure Directly
+## Section 1: Shipping from Infrastructure Directly
 In order to ship from infrastructure directly you will simply install an agent onto your server. We often find customers installing the agent on their workloads runnning on Amazon Elastic Compute Cloud (EC2), Amazon Elastic Container Service (ECS), and Amazon Elastic Kubernetes Service (EKS) on EC2, AWS Fargate, and AWS Lambda, as well as on-premises.
 
 This allows you to have fine tune control over what telemetry data you are shipping for example you may want to reduce the metrics enabled by default in certain exporters, or you may want to add particualr labels to your metrics and traces that tells you the region and environment the telemetry data is coming from, or you may not want to send logs only at a particualar path. By shipping data directly off of the machine itself you are able to create consistency across account, cloud providers, and onpremise. 
@@ -75,7 +75,7 @@ The advantage of using Grafana backends in hybrid environments becomes apparent 
 
 If you want to learn more about what is all avaiable with the Kubernetes Integration [click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/).
 
-## Section 2: Ship from CloudWatch
+## Section 2: Shipping from CloudWatch
 Sometimes installing an agent on AWS services is not possible. This is true for many AWS Managed Services. The idea is that they are managed so your burden of responsibliyt shifts when it comes to observing your applications. 
 
 This is where the AWS integration comes in. The AWS integration type lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without having to deploy or install any local agents or configurations. Users only need to connect to their AWS account via the Grafana Cloud UI. 
