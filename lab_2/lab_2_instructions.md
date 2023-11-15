@@ -25,54 +25,53 @@ The Grafana Cloud Integrations bundle Grafana Agent, tailored Grafana dashboards
 Grafana Integrations make it possible to achieve a Fast Time to Value
 You can think of integrations as the easy-button, it bundles exporters, the Grafana Agent, dashboards, and alerting for common systems such as linux, k8s, sql, etc. Integrations is a cloud only feature however you can leverage the [k8s mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin) in the OSS version to achieve something similiar. You can also recreate these dashboards or export them, all of the basic metrics are available you will just have to copy over the relabels in the Grafana Agent configuration and change the remote_write from being a cloud instance to a self managed instance.
 
-1\. Navigate back to your Grafana Cloud Account
+```Step 1:``` Navigate to [https://awsworkshopbreakouts.grafana.net/?orgId=1](https://awsworkshopbreakouts.grafana.net/?orgId=1)
 
 
-2\. In the upper left hand corner open up the Menu Bar by clicking on the Icon next to the word **Home**
+```Step 2:``` In the upper left hand corner open up the **Menu Bar** by clicking on the Icon next to the word **Home**
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/b0fedb38-0f48-4076-a0f5-544c4d71556f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1053,916&force_format=png&width=1120.0)
 
 
-3\. Then click **Dashboards**
+```Step 3:``` Click **Dashboards**
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/43befab8-fcde-443e-9235-4f0478080e75/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1146,515&force_format=png&width=1120.0)
 
 
-4\. Click "Integration - Kubernetes"
+```Step 4:``` Click **Integration - Kubernetes**
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/dae3de20-61aa-46d0-88ad-261e76152588/user_cropped_screenshot.jpeg?tl_px=0,93&br_px=1305,1055&force_format=png&width=1120.0)
 
 
-5\. Click "Kubernetes / Compute Resources / Cluster"
+```Step 5:``` Click **Kubernetes / Compute Resources / Cluster**
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/f7010be8-f22f-454e-8576-ec249011de03/user_cropped_screenshot.jpeg?tl_px=74,294&br_px=1364,1016&force_format=png&width=1120.0)
 
 
-6\. Notice you can adjust what renders on the page with the dropdown variables
+Notice you can adjust what renders on the page with the dropdown variables, this is great if you are looking to compare different clusters or namespaces. 
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/7f54c9fd-332d-4bc6-8987-6560f79ffe5f/user_cropped_screenshot.jpeg?tl_px=90,0&br_px=2384,1074&force_format=png&width=1120.0&wat=1&wat_opacity=1&wat_gravity=northwest&wat_url=https://colony-recorder.s3.amazonaws.com/images/watermarks/0EA5E9_standard.png&wat_pad=1226,20)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/40abe181-21a8-416a-b3ff-bbd71e5c9be5/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1575,620&force_format=png&width=1120.0)
 
-
-7\. Additionally, you can change the timeframe for which the dashboard renders data. Try changing it to the last 12 hours. 
+Additionally, you can change the timeframe for which the dashboard renders data. Try changing it to the last 12 hours. 
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/1cebd87b-96fd-463b-b830-1dee35f7ed8d/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1526,770&force_format=png&width=1120.0)
 
 
-8\. You can click and drag on the graph to zoom back into particular timeframes that look of interest
+You can click and drag on the graph to zoom back into particular timeframes that look of interest
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/ec885a75-ae9e-4dd7-aa81-6d8737374913/user_cropped_screenshot.jpeg?tl_px=262,0&br_px=2556,519&force_format=png&width=1120.0)
 
 
-9\. Next we will drill down into one of our Namespaces. Under CPU Quota click on the Namespace = "otel-demo-obscon"
+```Step 6:``` Next we will drill down into one of our Namespaces. Under CPU Quota click on the Namespace = "otel-demo-obscon"
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/ce6e52fc-d05a-4368-94a5-91676e945bbf/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1388,1207&force_format=png&width=1120.0)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/b3709b76-fb8c-46cc-a956-750a09223749/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2055,1103&force_format=png&width=1120.0)
 
 
-10\. In the Pod overview menu feel free to further drill down into any of the pods showing
+In the Pod overview dashboard feel free to further drill down into any of the pods showing
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/795b911a-39b6-4ec6-9488-ca674e457eb5/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=3264,1804&force_format=png&width=1120.0)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/efce4b3c-0057-4dc5-bb54-8c587517d749/user_cropped_screenshot.jpeg?tl_px=233,0&br_px=2527,1064&force_format=png&width=1120.0)
 
-The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards, this is because you can leverage the same dashboards, alerts, and flows for simliar workloads regardless of if they are in the cloud or onpremise.
+The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards, this is because you can leverage the same dashboards, alerts, and flows for similiarly hosted workloads regardless of if they are in the cloud or onpremise.
 
 If you want to learn more about what is all avaiable with the Kubernetes Integration [click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/).
 
@@ -81,35 +80,34 @@ Sometimes installing an agent on AWS services is not possible. This is true for 
 
 This is where the AWS integration comes in. The AWS integration type lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without having to deploy or install any local agents or configurations. Users only need to connect to their AWS account via the Grafana Cloud UI. 
 
-*** Note: for the purpose of this lab, we have already done these step so data would be available for you to query. Once you setup the integration data begins to flow from that point forward into your Grafana Cloud telemetry databases.
+*****Note:** *we have already done these step so data would be available for you to query. Once you setup the integration data begins to flow from that point forward into your Grafana Cloud telemetry databases.*
 
 To set up this integration, it only takes three steps after you select what type of telemetry you would like to gather.
-![Grafana Login Page](images/options.png)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
 
-Step 1: Create a new role in AWS. This can be done automatically via CloudFormation or you can do so manually.
+```Step 1:``` Create a new role in AWS. This can be done automatically via CloudFormation or you can do so manually.
 ![Grafana Login Page](images/step1.png)
 
-Step 2: Input the connection details to your AWS account
-![Grafana Login Page](images/step2.png)
+```Step 2:``` Input the connection details to your AWS account. These will be outputs in the CloudFormation stack or you can find them in the AWS console.
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/57931064-947c-49d3-86d8-e3cbed6ba1b5/user_cropped_screenshot.jpeg?tl_px=25,0&br_px=1745,844&force_format=png&width=1120.0)
 
-Step 3: Create scrape job
-![Grafana Login Page](images/3.png)
+*****Note:** *you can optionally include your AWS Resource Tags in the data sent to Grafana Cloud (ex, env, application). Tags will appear as labels on the exported metric with a tag_ prefix. [Click here](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html) to learn more about the benefits of tagging your AWS resources if you do not already.*
 
-Step 4: Configure service settings
+```Step 3:``` Next you will configure which services you want to pull metrics from, as well as what metrics/aggregates you want to pull.
 
-![Grafana Login Page](images/4.png)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/827ed3eb-5698-4d0a-9e5d-f34a6b6728c8/ascreenshot.jpeg?tl_px=469,614&br_px=2016,1479&force_format=png&width=1120.0&wat=1&wat_opacity=1&wat_gravity=northwest&wat_url=https://colony-recorder.s3.amazonaws.com/images/watermarks/0EA5E9_standard.png&wat_pad=524,277)
 
-You can optionally include your AWS Resource Tags in the data sent to Grafana Cloud (ex, env, application). Tags will appear as labels on the exported metric with a tag_ prefix. 
+*****Pro Tip:** *do not reinvent the wheel, if you need a good starting point simply look up the service you want to monitor and then CloudWatch and you will be able to find the definitions of each of the metrics [Amazon DynamoDB example](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/metrics-dimensions.html).*
 
-You can create can create any number of job configurations dictating which services, regions, and AWS accounts to collect from within the AWS Integration. This enables you to logically split your data into specific jobs and scrape any number of AWS accounts to better organize your data.
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
+
+You can create any number of job configurations dictating which services, regions, and AWS accounts to collect metrics/logs from. 
 
 ![Grafana Login Page](images/5.png)
 
-All of the data pulled via the Integration is stored in Mimir (Prometheus) and Loki (Prometheus but for logs) – so users interact with and explore this data using the same query language they would use if they were to install the agents directly on the machines (such as in part 1). 
+All of the data pulled via the Integration is stored in Mimir (Prometheus) and Loki (Prometheus but for logs) – allowing users interact with and explore this data using the same query language, dashboards, alerts, etc. This provides a consistent way for your end users to query their data as well  reduces the cost variablity with querying/surfacing metrics and logs from the CloudWatch API via the Plugin (lab 1).
 
-This provides a consistent way for your end users to query their data as well  reduces the cost variablity with querying/surfacing metrics and logs from the CloudWatch API via the Plugin (lab 1).
-
-Once the data is in the Grafana Cloud telemetry backends there are no additional fees associated with querying, using dashboards, or running alerts against the data that’s been. The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system. Lets explore the EC2 dashboard.
+Once the data is in the Grafana Cloud telemetry backend there are no additional fees associated with querying, using dashboards, or running alerts against the data that’s been. The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system. Lets explore some metrics specific to the serverless architecture we played with in lab 1.
 
 ### Hands on 
 1. Click the VIEW DASHBOARDS button to see available dashboards.
@@ -126,7 +124,7 @@ This is what your EC2 dashboard should look like.
 4. Now you can see the underlying query that makes up this panel - this is PromQL! 
 <img width="1664" alt="Screenshot 2023-10-20 at 8 23 00 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/c6ef9520-f5fd-44df-ac05-7c1e7bed8328">
 
-**** Note: today the AWS integration only supports metrics and logs, you would have to have another method to ingest traces, as well all jobs have a scrape interval of 5m minutes and is currently not configurable. This is not the case for all other integrations. This is under active development more exciting features are coming soon.
+Today the AWS integration has limited capablities and only supports metrics and logs. You would have to leverage another method to ingest traces. Additionally all jobs created using the AWS Integration will have a nonconfigurable scrape intervals of 5m minutes. This is under active development, exciting advancements are coming soon!
 
 ### Part 3: Unified Monitoring with Grafana - The First Pane of Glass
 Grafana can query multiple data sources simultaneously. This means you can combine data from various AWS services (like CloudWatch, Elasticsearch, and AWS X-Ray) and other sources (like Prometheus or SQL databases) in a single dashboard for a unified view of your infrastructure and applications.
