@@ -103,9 +103,7 @@ To set up this integration, it only takes three steps after you select what type
 
 You can create any number of job configurations dictating which services, regions, and AWS accounts to collect metrics/logs from. 
 
-![Grafana Login Page](images/5.png)
-
-All of the data pulled via the Integration is stored in Mimir (Prometheus) and Loki (Prometheus but for logs) – allowing users interact with and explore this data using the same query language, dashboards, alerts, etc. This provides a consistent way for your end users to query their data as well  reduces the cost variablity with querying/surfacing metrics and logs from the CloudWatch API via the Plugin (lab 1).
+Keep in mind what you are configuring here is pulling in CloudWatch data into Grafana Mimir (Prometheus) and Grafana Loki (Prometheus but for logs) – allowing users interact with and explore this data using the same query language, dashboards, alerts, etc. This provides a consistent way for your end users to query their data as well  reduces the cost variablity with querying/surfacing metrics and logs from the CloudWatch API via the Plugin (lab 1).
 
 Once the data is in the Grafana Cloud telemetry backend there are no additional fees associated with querying, using dashboards, or running alerts against the data that’s been. The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system. Lets explore some metrics specific to the serverless architecture we played with in lab 1.
 
