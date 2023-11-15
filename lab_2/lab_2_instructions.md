@@ -82,13 +82,12 @@ This is where the AWS integration comes in. The AWS integration type lets users 
 
 *****Note:** *we have already done these step so data would be available for you to query. Once you setup the integration data begins to flow from that point forward into your Grafana Cloud telemetry databases. To set up this integration, it only takes three steps after you select what type of telemetry you would like to gather. *
 
-
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
-
 ```Step 1:``` Create a new role in AWS. This can be done automatically via CloudFormation or you can do so manually.
+
 ![Grafana Login Page](images/step1.png)
 
 ```Step 2:``` Input the connection details to your AWS account. These will be outputs in the CloudFormation stack or you can find them in the AWS console.
+
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/57931064-947c-49d3-86d8-e3cbed6ba1b5/user_cropped_screenshot.jpeg?tl_px=25,0&br_px=1745,844&force_format=png&width=1120.0)
 
 *****Note:** *you can optionally include your AWS Resource Tags in the data sent to Grafana Cloud (ex, env, application). Tags will appear as labels on the exported metric with a tag_ prefix. [Click here](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html) to learn more about the benefits of tagging your AWS resources if you do not already.*
@@ -97,7 +96,7 @@ This is where the AWS integration comes in. The AWS integration type lets users 
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/6141c887-229f-4bf1-9939-9aac04610277/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2058,1182&force_format=png&width=1120.0)
 
-When determining what to monitor do not reinvent the wheel, if you need a good starting point simply look up the service you want to monitor you can go into the AWS console under that particular service and see what AWS has selected also you will be able to find the definitions of each of the metrics online, this can also serve as a good starting point. [Amazon DynamoDB example...](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/metrics-dimensions.html).*
+```Step 4:``` Once you have figured configuring what metrics to scrape, you press 'Create Scrape Job' and Grafana will begin pulling in your metrics... it's that easy!
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
 
@@ -105,9 +104,11 @@ You can create any number of job configurations dictating which services, region
 
 Keep in mind what you are configuring here is pulling in CloudWatch data into Grafana Mimir (Prometheus) and Grafana Loki (Prometheus but for logs) – allowing users interact with and explore this data using the same query language, dashboards, alerts, etc. This provides a consistent way for your end users to query their data as well  reduces the cost variablity with querying/surfacing metrics and logs from the CloudWatch API via the Plugin (lab 1).
 
-Once the data is in the Grafana Cloud telemetry backend there are no additional fees associated with querying, using dashboards, or running alerts against the data that’s been. The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system. Lets explore some metrics specific to the serverless architecture we played with in lab 1.
+Once the data is in the Grafana Cloud telemetry backend there are no additional fees associated with querying, using dashboards, or running alerts against the data that’s been. The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system. 
 
-### Hands on 
+### Hands on with the Collected Data
+A very common use case to leverage the AWS Integrations for is Managed AWS Services. Often times those do not have any way to directly ship your telemetry to other backends. Lets explore some metrics specific to the serverless architecture we played with in lab 1.
+
 1. Click the VIEW DASHBOARDS button to see available dashboards.
    <img width="1405" alt="Screenshot 2023-10-20 at 8 08 24 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/1727f156-3e84-4cd4-876a-1528b8f9f331">
 2. Choose a dashboard, lets start with EC2.
@@ -122,7 +123,7 @@ This is what your EC2 dashboard should look like.
 4. Now you can see the underlying query that makes up this panel - this is PromQL! 
 <img width="1664" alt="Screenshot 2023-10-20 at 8 23 00 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/c6ef9520-f5fd-44df-ac05-7c1e7bed8328">
 
-Today the AWS integration has limited capablities and only supports metrics and logs. You would have to leverage another method to ingest traces. Additionally all jobs created using the AWS Integration will have a nonconfigurable scrape intervals of 5m minutes. This is under active development, exciting advancements are coming soon!
+Please note as of today the AWS integration has limited capablities and only supports metrics and logs. You would have to leverage another method to ingest traces. Additionally all jobs created using the AWS Integration will have a nonconfigurable scrape intervals of 5 minutes. This is under active development, exciting advancements are coming soon!
 
 ### Part 3: Unified Monitoring with Grafana - The First Pane of Glass
 Grafana can query multiple data sources simultaneously. This means you can combine data from various AWS services (like CloudWatch, Elasticsearch, and AWS X-Ray) and other sources (like Prometheus or SQL databases) in a single dashboard for a unified view of your infrastructure and applications.
