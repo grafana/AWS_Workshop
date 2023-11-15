@@ -80,9 +80,9 @@ Sometimes installing an agent on AWS services is not possible. This is true for 
 
 This is where the AWS integration comes in. The AWS integration type lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without having to deploy or install any local agents or configurations. Users only need to connect to their AWS account via the Grafana Cloud UI. 
 
-*****Note:** *we have already done these step so data would be available for you to query. Once you setup the integration data begins to flow from that point forward into your Grafana Cloud telemetry databases.*
+*****Note:** *we have already done these step so data would be available for you to query. Once you setup the integration data begins to flow from that point forward into your Grafana Cloud telemetry databases. To set up this integration, it only takes three steps after you select what type of telemetry you would like to gather. *
 
-To set up this integration, it only takes three steps after you select what type of telemetry you would like to gather.
+
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
 
 ```Step 1:``` Create a new role in AWS. This can be done automatically via CloudFormation or you can do so manually.
@@ -95,9 +95,9 @@ To set up this integration, it only takes three steps after you select what type
 
 ```Step 3:``` Next you will configure which services you want to pull metrics from, as well as what metrics/aggregates you want to pull.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/827ed3eb-5698-4d0a-9e5d-f34a6b6728c8/ascreenshot.jpeg?tl_px=469,614&br_px=2016,1479&force_format=png&width=1120.0&wat=1&wat_opacity=1&wat_gravity=northwest&wat_url=https://colony-recorder.s3.amazonaws.com/images/watermarks/0EA5E9_standard.png&wat_pad=524,277)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/6141c887-229f-4bf1-9939-9aac04610277/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2058,1182&force_format=png&width=1120.0)
 
-*****Pro Tip:** *do not reinvent the wheel, if you need a good starting point simply look up the service you want to monitor and then CloudWatch and you will be able to find the definitions of each of the metrics [Amazon DynamoDB example](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/metrics-dimensions.html).*
+When determining what to monitor do not reinvent the wheel, if you need a good starting point simply look up the service you want to monitor you can go into the AWS console under that particular service and see what AWS has selected also you will be able to find the definitions of each of the metrics online, this can also serve as a good starting point. [Amazon DynamoDB example...](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/metrics-dimensions.html).*
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
 
