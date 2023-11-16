@@ -242,7 +242,7 @@ Next we will have the relevant error logs displayed on the dashboard.
 ![xray1](images/xray1.png)
 
 
-```Step 3:``` Click **Trace List** and select 'Service Map'
+```Step 3:``` Click **Trace List** and select **Service Map**'**
 
 ![sm](images/sm.png)
 
@@ -254,7 +254,7 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ![Vis Change](images/ng.png)
 
-```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below.
+```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below. **Please note the X-Ray API only allows you to query 6 hours worth of data at a time.**
 
 ![Refresh](images/refreshsm.png)
 
