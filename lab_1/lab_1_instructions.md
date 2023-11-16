@@ -254,7 +254,7 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ![Vis Change](images/ng.png)
 
-```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below. **Please note the X-Ray API only allows you to query 6 hours worth of data at a time.**
+```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below. **Please note the X-Ray API only allows you to query 6 hours worth of data at a time. If you get an error please change your timeframe**
 
 ![Refresh](images/refreshsm.png)
 
