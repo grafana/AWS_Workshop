@@ -75,7 +75,7 @@ The advantage of using Grafana backends in hybrid environments becomes apparent 
 
 If you want to learn more about what is all avaiable with the Kubernetes Integration [click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/).
 
-## Section 2: Shipping from CloudWatch
+## Section 2: Shipping Data from CloudWatch
 Sometimes installing an agent on AWS services is not possible. This is true for many AWS Managed Services. The idea is that they are managed so your burden of responsibliyt shifts when it comes to observing your applications. 
 
 This is where the AWS integration comes in. The AWS integration type lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without having to deploy or install any local agents or configurations. Users only need to connect to their AWS account via the Grafana Cloud UI. 
@@ -107,23 +107,42 @@ Keep in mind what you are configuring here is pulling in CloudWatch data into Gr
 Once the data is in the Grafana Cloud telemetry backend there are no additional fees associated with querying, using dashboards, or running alerts against the data that’s been. The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system. 
 
 ### Hands on with the Collected Data
-A very common use case to leverage the AWS Integrations for is Managed AWS Services. Often times those do not have any way to directly ship your telemetry to other backends. Lets explore some metrics specific to the serverless architecture we played with in lab 1.
+A very common use case to leverage the AWS Integrations for is Managed AWS Services. Often times those do not have any way to directly ship your telemetry to other backends. In this part of the lab we will be looking at one of prebuilt dashboards that comes out of the box.
 
-1. Click the VIEW DASHBOARDS button to see available dashboards.
-   <img width="1405" alt="Screenshot 2023-10-20 at 8 08 24 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/1727f156-3e84-4cd4-876a-1528b8f9f331">
-2. Choose a dashboard, lets start with EC2.
-   <img width="1377" alt="Screenshot 2023-10-20 at 8 09 30 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/86f55394-0fbe-4c21-b786-9960658695f1">
+```Step 1:``` In the upper left hand corner open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
 
-This is what your EC2 dashboard should look like. 
-<img width="1649" alt="Screenshot 2023-10-20 at 8 14 09 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/992fa689-b4bd-4839-9f4e-c28f440bd8ff">
+![Grafana Menu Navigation](images/menu_nav.png)
 
-3. Take one of the panels from your dashboard into explore mode by clicking the three dots in the upper right-hand corner.
-<img width="858" alt="Screenshot 2023-10-20 at 8 22 50 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/6f20f34e-af48-4185-9c9b-d6862bf2b24a">
+```Step 2:``` Select "Integration - CloudWatch Metrics"
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/7ce00cc7-4167-4ad2-b300-e233aa56dfb6/user_cropped_screenshot.jpeg?tl_px=0,19&br_px=601,452&force_format=png&width=774)
+
+```Step 3:``` Select "AWS Lambda"
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/f5a4cb96-3066-417d-9eb0-a0ea98c352f3/user_cropped_screenshot.jpeg?tl_px=0,146&br_px=565,627&force_format=png&width=860)
+
+```Step 4:``` Click on the dropdown that is labeled 'job'. You will notice that directly corresponds to the name given to the scrape job we setup (previous steps). You will also see filters for region and function name.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/0daa42b0-a69b-4189-8b92-3c27327e50bf/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=609,368&force_format=png&width=774)
+
+While these dashboards are less comphrensive than that of the Kubernetes integration we saw earilier. These dashboards are simply meant to give you a starting point to have some basic monitoring the real power comes in when we start creating our own tailorted dashboards with this. You can examine the underlying query and add it to your own dashboards very easily.
+
+```Step 5:``` To do so, hoover over the upper righthand side of on of the dashboard visualizations. Then click on the three dots and select Explore.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/9db42a0d-b2fe-4021-a879-7a4422be2463/user_cropped_screenshot.jpeg?tl_px=55,23&br_px=1774,984&force_format=png&width=1120.0)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/a36b0bc4-7b25-4331-a2bc-9331745a4991/user_cropped_screenshot.jpeg?tl_px=76,59&br_px=1624,925&force_format=png&width=1120.0)
+
    
-4. Now you can see the underlying query that makes up this panel - this is PromQL! 
-<img width="1664" alt="Screenshot 2023-10-20 at 8 23 00 AM" src="https://github.com/grafana/AWS_Workshop/assets/104938954/c6ef9520-f5fd-44df-ac05-7c1e7bed8328">
+You should now be able to see the underlying query that makes up this panel - this is PromQL! You could do the same thing with the Kubernetes dashboards we explored earlier.
 
-Please note as of today the AWS integration has limited capablities and only supports metrics and logs. You would have to leverage another method to ingest traces. Additionally all jobs created using the AWS Integration will have a nonconfigurable scrape intervals of 5 minutes. This is under active development, exciting advancements are coming soon!
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/5f3c4d2d-f2dd-4694-88a4-e5fdc03b059a/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=3325,1317&force_format=png&width=1120.0)
+
+
+```Step 6:``` Now if we wanted to add this to a dashboard we could do it straight from this screen by selecting **Add** -> **Add to dashboard**. Then you simply select which dashboard you want to add this query to.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/1ecb53ae-2b63-4f97-9592-646d12e84a3d/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1096,807&force_format=png&width=1120.0)
+
 
 ### Part 3: Unified Monitoring with Grafana - The First Pane of Glass
 Grafana can query multiple data sources simultaneously. This means you can combine data from various AWS services (like CloudWatch, Elasticsearch, and AWS X-Ray) and other sources (like Prometheus or SQL databases) in a single dashboard for a unified view of your infrastructure and applications.
