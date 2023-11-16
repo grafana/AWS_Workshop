@@ -27,27 +27,25 @@ Grafana Integrations make it possible to achieve a fast time to value. Integrati
 ```Step 1:``` Navigate to [https://awsworkshopbreakouts.grafana.net/?orgId=1](https://awsworkshopbreakouts.grafana.net/?orgId=1)
 
 
-```Step 2:``` In the upper left hand corner open up the **Menu Bar** by clicking on the Icon next to the word **Home**
+```Step 2:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/b0fedb38-0f48-4076-a0f5-544c4d71556f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1053,916&force_format=png&width=1120.0)
+![Grafana Menu Navigation](images/menu_nav.png)
 
+```Step 3:``` Click **Integration - Kubernetes**
 
-```Step 3:``` Click **Dashboards**
-
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/43befab8-fcde-443e-9235-4f0478080e75/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1146,515&force_format=png&width=1120.0)
-
-
-```Step 4:``` Click **Integration - Kubernetes**
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/dae3de20-61aa-46d0-88ad-261e76152588/user_cropped_screenshot.jpeg?tl_px=0,93&br_px=1305,1055&force_format=png&width=1120.0)
 
 
-```Step 5:``` Click **Kubernetes / Compute Resources / Cluster**
+```Step 4:``` Click **Kubernetes / Compute Resources / Cluster**
+
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/f7010be8-f22f-454e-8576-ec249011de03/user_cropped_screenshot.jpeg?tl_px=74,294&br_px=1364,1016&force_format=png&width=1120.0)
 
 
 Notice you can adjust what renders on the page with the dropdown variables; this is great if you are looking to compare different clusters or namespaces. 
+
+
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/7f54c9fd-332d-4bc6-8987-6560f79ffe5f/user_cropped_screenshot.jpeg?tl_px=90,0&br_px=2384,1074&force_format=png&width=1120.0&wat=1&wat_opacity=1&wat_gravity=northwest&wat_url=https://colony-recorder.s3.amazonaws.com/images/watermarks/0EA5E9_standard.png&wat_pad=1226,20)
 
 
@@ -61,14 +59,17 @@ You can click and drag on the graph to zoom into interesting timeframes.
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/ec885a75-ae9e-4dd7-aa81-6d8737374913/user_cropped_screenshot.jpeg?tl_px=262,0&br_px=2556,519&force_format=png&width=1120.0)
 
 
-```Step 6:``` Next, we will drill down into one of our Namespaces. Under CPU Quota, click on the Namespace = "otel-demo-obscon"
+```Step 5:``` Next, we will drill down into one of our Namespaces. Under CPU Quota, click on the Namespace = "otel-demo-obscon"
+
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/b3709b76-fb8c-46cc-a956-750a09223749/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2055,1103&force_format=png&width=1120.0)
 
 
 Feel free to drill down further into any pods showing in the Pod overview dashboard.
 
+
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/efce4b3c-0057-4dc5-bb54-8c587517d749/user_cropped_screenshot.jpeg?tl_px=233,0&br_px=2527,1064&force_format=png&width=1120.0)
+
 
 The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise.
 
