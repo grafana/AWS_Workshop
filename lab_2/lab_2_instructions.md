@@ -80,7 +80,7 @@ Sometimes, installing an agent on AWS services is not possible. This is true for
 
 This is where the AWS integration comes in. The AWS integration type lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without deploying or installing any local agents or configurations. Users only need to connect to their AWS account via the Grafana Cloud UI. 
 
-*****Note:** *we have already done these steps, so data will be available for you to query. Once you set up the integration, data flows from that point forward into your Grafana Cloud telemetry databases. *
+*****Note:** *we have already done these steps, so data will be available for you to query. Once you set up the integration, data flows from that point forward into your Grafana Cloud telemetry databases.*
 
 ```Step 1:``` Create a new role in AWS. This can be done automatically via CloudFormation, or you can do so manually.
 
@@ -106,7 +106,7 @@ Keep in mind what you are configuring here is pulling in CloudWatch data into Gr
 
 Once the data is in the Grafana Cloud telemetry backend, there are no additional fees associated with querying, using dashboards, or running alerts against the data that’s been collected. The CloudWatch metrics integration installs prebuilt dashboards in your Grafana Cloud instance to help monitor your system. 
 
-### Hands on with the Collected Data
+### Exploring the Collected Data
 A common use case to leverage the AWS Integrations is for Managed AWS Services. Often, those do not have a way to ship your telemetry directly to other backends. In this lab part, we will look at one of the prebuilt dashboards that comes out of the box.
 
 ```Step 1:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
@@ -139,7 +139,7 @@ You should now be able to see the underlying query that makes up this panel - th
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/5f3c4d2d-f2dd-4694-88a4-e5fdc03b059a/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=3325,1317&force_format=png&width=1120.0)
 
 
-```Step 6: `` Now, if we want to add this to a dashboard, we could do it straight from this screen by selecting **Add** -> **Add to dashboard**. Then, you choose which dashboard to which you want to add this query, and voila.
+```Step 6:``` Now, if we want to add this to a dashboard, we could do it straight from this screen by selecting **Add** -> **Add to dashboard**. Then, you choose which dashboard to which you want to add this query, and voila.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/1ecb53ae-2b63-4f97-9592-646d12e84a3d/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1096,807&force_format=png&width=1120.0)
 
