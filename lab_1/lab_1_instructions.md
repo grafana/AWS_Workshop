@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Building on your introduction to observability and Grafana from the previous presentation, this lab offers a practical opportunity to apply your knowledge. In this lab you will dive deep into understanding how to utilize [Grafana plugins](./supplementary_information/plugin_basics.md) to visualize data that is being stored in AWS today without having to move or duplicate the data. 
+Building on your introduction to observability and Grafana from the previous presentation, this lab offers a practical opportunity to apply your knowledge. In this lab, you will dive deep into understanding how to utilize [Grafana plugins](./supplementary_information/plugin_basics.md) to visualize data being stored in AWS today without moving or duplicating the data. 
 
 The Grafana Plugins that will be used in the first lab today are:
 
-- [Amazon CloudWatch](https://grafana.com/grafana/plugins/cloudwatch/): Collects monitoring data, providing a holistic view of AWS resources, applications, and services, supporting setup of alarms, logs and metrics visualization, and automated troubleshooting actions.
+- [Amazon CloudWatch](https://grafana.com/grafana/plugins/cloudwatch/): Collects monitoring data, providing a holistic view of AWS resources, applications, and services, supporting setup of alarms, logs, metrics, visualization, and automated troubleshooting actions.
 
 - [AWS X-Ray](https://grafana.com/grafana/plugins/grafana-x-ray-datasource/): A tracing service enabling application analysis and debugging, illuminating user journeys across distributed system components.
 
@@ -19,14 +19,14 @@ By the end of this lab, you will be able to:
 
 ## Scenario
 
-You are a part of the DevOps/SRE team at FictionTech, which is in charge of overseeing a recommendations service integrated within the company’s website. This service aims to increase user engagement and sales by providing real-time, tailored product recommendations. You have been tasked with creating a dashboard to help the teams better understand this application's performance. Below is the architectural breakdown of the recommendations service:
+You are a part of the DevOps/SRE team at FictionTech, which oversees a recommendations service integrated within the company's website. This service aims to increase user engagement and sales by providing real-time, tailored product recommendations. You have been tasked with creating a dashboard to help the teams better understand this application's performance. Below is the architectural breakdown of the recommendations service:
 
 ![Architecture Diagram](images/arch1.png)
 
-1. **User Request**: Initiated from multiple sources including email listservs, the website, or other applications.
-2. **Amazon API Gateway**: Receives requests, redirecting them to the appropriate AWS Lambda function.
+1. **User Request**: Initiated from multiple sources, including email listservs, website pages, or other applications.
+2. **Amazon API Gateway**: Receives the requests and invokes the AWS Lambda function
 3. **AWS Lambda**: Performs business logic, which entails storing data in DynamoDB and, under certain conditions, making API calls to a third-party recommendations ML model.
-4. **Amazon DynamoDB**: Functions as the database for data storage and retrieval.
+4. **Amazon DynamoDB**: Functions as the data storage and retrieval database.
 5. **Third-Party Recommendations ML Model**: Produces personalized product suggestions based on the received data.
 6. **Response**: Outputs from DynamoDB or the recommendations ML model are returned to the user via the Lambda function and API Gateway.
 
@@ -37,7 +37,7 @@ You are a part of the DevOps/SRE team at FictionTech, which is in charge of over
 ### Part 1: Access Grafana Cloud Environment
 For this workshop, a preconfigured Grafana Cloud stack is provided. Let's start by ensuring you can successfully log in to the instance.
 
-```Step 1:``` Open your web browser and navigate to the Grafana instance URL that you were sent via email prior to the workshop
+```Step 1:``` Open your web browser and navigate to the Grafana instance URL that you were sent via email before the workshop
 
 ```Step 2:``` Press the **Sign in with Grafana.com** and enter the corresponding username and password
 
@@ -48,9 +48,9 @@ For this workshop, a preconfigured Grafana Cloud stack is provided. Let's start 
 ### Part 2: Creating a New Dashboard
 A dashboard gives you an at-a-glance view of your data and lets you track metrics through different visualizations. Dashboards consist of panels, each representing a part of the story you want your dashboard to tell. Every panel consists of a query and a visualization. The query defines what data you want to display, whereas the visualization defines how the data is displayed.
 
-In this part, you'll learn how to create and set up a new Grafana dashboard. To learn more about Grafana's dashboarding capabilites [click here](https://grafana.com/docs/grafana/latest/fundamentals/dashboards-overview/).
+In this part, you'll learn how to create and set up a new Grafana dashboard. To learn more about Grafana's dashboarding capabilities [click here](https://grafana.com/docs/grafana/latest/fundamentals/dashboards-overview/).
 
-```Step 1:``` In the upper left hand corner open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
+```Step 1:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
 
 ![Grafana Menu Navigation](images/menu_nav.png)
 
@@ -58,25 +58,22 @@ In this part, you'll learn how to create and set up a new Grafana dashboard. To 
 
 ![New Dashboard](images/new_dash.png)
 
-```Step 3:``` In the dashboard on the upper right hand corner click on the **Settings** button
+```Step 3:``` On the dashboard, in the upper right hand corner click on the **Save** button
 
-![Settings](images/settings.png)
+![Settings](images/sbd.png)
 
-```Step 4:``` Replace the field Title with 'Recommendations Service - {Your Name}'
+```Step 4:``` Replace the field Title with 'Recommendations Service Overview'
 
-![Change Title](images/changetitle.png)
 
-```Step 5:``` Click **Save dashboard** on the top right hand corner
+```Step 5:``` Change the folder to be the one which has your '<first_name>_<last_name>' pattern. Due to the way access control was configured in this instance, you can only modify/create dashboards in the folder with your name. Do not worry about breaking things for others :) 
 
-![Save Dashboard](images/savedash.png)
+![Change Title](images/folderse.png)
 
-```Step 6:``` Click **Save** again
-
-![Save2](images/save2.png)
+```Step 6:``` Click **Save**
     
-**Note**: When organizations have one Grafana and multiple teams, they often want the ability to both keep things separate and share dashboards. You can create a team of users and then set RBAC permissions on folders and dashboards, and down to the data source level if you’re using [Grafana Enterprise or Grafana Cloud](https://grafana.com/pricing/).
+**Note**: When organizations have one Grafana instance and multiple teams, they often want the ability to both keep things separate and share dashboards. You can create a team of users, then set RBAC permissions on folders and dashboards and down to the data source level if you’re using [Grafana Enterprise or Grafana Cloud](https://grafana.com/pricing/). See [this blog post](https://grafana.com/blog/2022/03/14/how-to-best-organize-your-teams-and-resources-in-grafana/) if you want to learn about best practices for organizing your teams and resources in Grafana.
 
-******Pro Tip**: Even though we are creating dashboards from scratch today, a good place to start when onboarding a new data source into grafana is our [community dashboard search](https://grafana.com/grafana/dashboards). There are over 5000 different example dashboards available. As well when utlizing Grafana Cloud some data sources come with example dashboards out of the box. For instance for AWS Cloudwatch it has 5 dashboards available out of the box you can [optionally import](https://grafana.com/grafana/dashboards).*
+******Pro Tip**: Even though we are creating dashboards from scratch today, a good place to start when onboarding a new data source into Grafana is our [community dashboard search](https://grafana.com/grafana/dashboards). There are over 5000 different example dashboards available. Also, when using Grafana Cloud, some data sources come with dashboard examples. For instance, AWS Cloudwatch has five dashboards available out of the box you can [optionally import](https://grafana.com/grafana/dashboards).*
 
 ### Part 3: Configure Your First Panel to Visualize Lambda Invocations
 Visualizing AWS Lambda invocations in Grafana provides critical insights into the usage patterns, performance, and cost of your Recommendations Service. Monitoring Lambda invocations helps identify abnormal traffic patterns, optimize costs, and ensure your service is running smoothly. Now, let's set up a panel to track and analyze these invocations.
@@ -89,7 +86,7 @@ Visualizing AWS Lambda invocations in Grafana provides critical insights into th
 
 ![Cloudwatch](images/cw.png)
 
-If this is your first time creating a Grafana dashboard [this guide](./supplementary_information/panel_walkthrough.md) will give you a brief walkthrough of the panel editing UI. 
+If this is your first time creating a Grafana dashboard, [this guide](./supplementary_information/panel_walkthrough.md) will give you a brief walkthrough of the panel editing UI. 
 
 ```Step 3:``` Set up the query to fetch data on Lambda function invocations with the following parameters: 
     - **Region**: Choose *us-east-2* as the AWS region
@@ -118,7 +115,7 @@ For more information about individual visualizations, refer to [Visualizations o
 
 ![Refresh](images/refresh.png)
 
-```Step 8:``` On the right hand side of the screen, set the *Title* to 'Lambda Invocations'
+```Step 8:``` On the right-hand side of the screen, set the *Title* to 'Lambda Invocations'
 
 ![Title Change](images/titlechange.png)
 
@@ -135,7 +132,7 @@ For more information about individual visualizations, refer to [Visualizations o
 ### Part 4: Add a Panel to Lambda Error Rate
 The next panel we create will show our Lambda Error Rate.
 
-```Step 1:``` Hover over the upper right hand side edge of the *Lambda Invocation panel* and click the 3 dot icon.
+```Step 1:``` Hover over the upper right-hand side edge of the *Lambda Invocation panel* and click the three-dot icon.
 
 ![hover](images/hover.png)
 
@@ -143,7 +140,7 @@ The next panel we create will show our Lambda Error Rate.
 
 ![duplicate](images/dup.png)
 
-```Step 3:``` Hover over the upper right hand side edge of one of the *Lambda Invocation panel* and click the 3 dot icon. 
+```Step 3:``` Hover over the upper right-hand side edge of one of the *Lambda Invocation panel* and click the three-dot icon. 
 
 ![hover](images/hoover.png)
 
@@ -164,7 +161,7 @@ The next panel we create will show our Lambda Error Rate.
 
 ![panel2](images/panel2.png)
 
-The Errors metric in AWS Lambda tallies the number of invocations ending in error, aggregated per minute. This includes errors from unhandled exceptions in your code and Lambda runtime issues like timeouts and configuration problems. 
+The Errors metric in AWS Lambda tallies the number of invocations ending in error aggregated per minute. This includes errors from unhandled exceptions in your code and Lambda runtime issues like timeouts and configuration problems. 
 
 ```Step 6:``` Scroll down and click add **+ expression**
 
@@ -172,13 +169,14 @@ The Errors metric in AWS Lambda tallies the number of invocations ending in erro
 
 ```Step 7:``` Set the operation to *Math* and the expression to **$B/$A**
 
-In order to calculate the error rate we must divide Errors by Invocations. To achieve this with the CloudWatch plugin we are referencing the previous queries we ran. The first query we ran was for Invocations and the second query we ran was for Errors. The CloudWatch plugin references the queries by letter. So the first query is referenced by A and the second query is referenced by B.
+To calculate the error rate, we must divide Errors by Invocations. To achieve this with the CloudWatch plugin, we are referencing the previous queries we ran. The first query we ran was for Invocations, and the second was for Errors. The CloudWatch plugin references the queries by letter. So, the first query is referenced by A, and the second is referenced by B.
+
 
 ![expression](images/exp2.png)
 
 ```Step 8:``` For the first two queries hit the **eye** icon. 
 
-The eye icon in Grafana is used to hide (or show) a specific query result on a panel. Since the purpose of this panel is to show the error rate of the Lambda function we only want to show the last query in our panel and not the first 2.
+The eye icon in Grafana is used to hide (or show) a specific query result on a panel. Since the purpose of this panel is to show the error rate of the Lambda function, we only want to show the last query in our panel and not the first 2.
 
 ![hide](images/hidea.png)
 
@@ -190,7 +188,7 @@ The eye icon in Grafana is used to hide (or show) a specific query result on a p
 
 The Transform tab in Grafana enables users to manipulate and modify data returned from a data source before visualization. Users can perform a variety of transformations, such as aggregating data points, filtering values, combining multiple queries, and reformatting data structures. These capabilities allow for more flexible and tailored visualizations, helping users derive meaningful insights from their data. [Click here](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to learn more.
 
-```Step 10:``` In the search box type in 'Organize' and then select the option **Organize fields**
+```Step 10:``` In the search box, type in 'Organize' and then select the option **Organize fields**
 
 ![orgfield](images/orgfield.png)
 
@@ -198,7 +196,7 @@ The Transform tab in Grafana enables users to manipulate and modify data returne
 
 ![errorrate](images/errorrate2.png)
 
-```Step 12:``` On the right hand side change the *Title* of the graph to be 'Lambda Error Rate'.
+```Step 12:``` On the right-hand side, change the *Title* of the graph to 'Lambda Error Rate'
 
 ![title2](images/title2.png)
 
@@ -210,9 +208,9 @@ The Transform tab in Grafana enables users to manipulate and modify data returne
 
 ![perc](images/perc7.png)
 
-Changing the unit on a Grafana panel affects how the data is displayed, making it easier to read and interpret. The unit does not change the underlying data; it only changes how the data is presented on the panel. In this case we changed it from the default number to percentage.
+Changing the unit on a Grafana panel affects how the data is displayed, making it easier to read and interpret. The unit does not change the underlying data; it only changes how the data is presented on the panel. We changed it from the default number to a percentage in this case.
 
-```Step 14:``` Search for 'Thresholds' field. Set the *Thresholds mode* to **Percentage**
+```Step 14:``` Search for the 'Thresholds' field. Set the *Thresholds mode* to **Percentage**
 
 ![perc](images/thres4.png)
 
@@ -231,7 +229,7 @@ Changing the unit on a Grafana panel affects how the data is displayed, making i
 ### Part 5: Show X-Ray Service Map
 We will now add the service graph from X-Ray to our dashboard.
 
-Next we will have the relevant error logs displayed on the dashboard. 
+Next, we will have the relevant error logs displayed on the dashboard. 
 
 ```Step 1:``` Click **Add** -> **Visualization**
 
@@ -254,13 +252,14 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ![Vis Change](images/ng.png)
 
-```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below. **Please note the X-Ray API only allows you to query 6 hours worth of data at a time. If you get an error please change your timeframe**
+```Step 6:``` Press the **Refresh** button. You should see a graph similar to the one below. **Please note that the X-Ray API only allows you to query 6 hours of data at a time. If you get an error, please change your timeframe**
+
 
 ![Refresh](images/refreshsm.png)
 
 ![Refresh](images/refreshg.png)
 
-```Step 9:``` On the right hand side change the *Title* of the graph to be 'Service Map'.
+```Step 9:``` On the right-hand side, change the *Title* of the graph to 'Service Map'
 
 ![elog3](images/sm7.png)
 
@@ -274,7 +273,7 @@ Next we will have the relevant error logs displayed on the dashboard.
 
 ### Part 6: Add a Panel to Show Error Logs
 
-Next we will have the relevant error logs displayed on the dashboard. 
+Next, we will have the relevant error logs displayed on the dashboard. 
 
 ```Step 1:``` Click **Add** -> **Visualization**
 
@@ -308,11 +307,11 @@ fields @timestamp, @message, xrayTraceId as @xrayTraceId
 | limit 20
 ```
 
-```Step 8:``` On the right hand side of the screen press the *visualization list selection dropdown* and select *Logs* for the visualization type
+```Step 8:``` On the right-hand side, of the screen press the *visualization list selection dropdown* and select *Logs* for the visualization type
 
 ![Vis Change](images/type3.png)
 
-```Step 9:``` On the right hand side change the *Title* of the graph to be 'Error Logs'.
+```Step 9:``` On the right-hand side, change the *Title* of the graph to be 'Error Logs'
 
 ![elog3](images/elog3.png)
 
@@ -324,25 +323,26 @@ fields @timestamp, @message, xrayTraceId as @xrayTraceId
 
 ![Apply](images/apply.png)
 
-Now what you will see are all of the error logs associated with this particular log group. This is a great way to quickly see what errors are occuring in your system. As well if you expand out the errors you will see links that will take you directly to the AWS X-Ray trace for that particular error or to the AWS CloudWatch Console.
+Now, you will see all the error logs associated with this particular log group. This is a great way to quickly see what errors are occurring in your system. Also, if you expand out the errors, you will see links that will take you directly to the AWS X-Ray trace for that particular error or to the AWS CloudWatch Console.
 
-This linking between log and the corresponding trace happens automatically if the the log line contains the [@xrayTraceId field](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#x-ray-trace-links).
+
+This linking between the log line and the corresponding trace happens automatically if the the log line contains the [@xrayTraceId field](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#x-ray-trace-links).
 
 ![links](images/mainss.png)
 ![trace](images/trace4.png)
 
 ## Conclusion/Next Steps
 
-**Well done!** You've established a starting point for your organization to monitor the service performance. For additional dashboard ideas, [click here](./supplementary_information/visualization_ideas.md), and to explore different visualization styles within Grafana, [click here](./supplementary_information/visualization_inspiration.md). Once the dashboards are to your liking you may want to consider the following next steps to enhance your operation:
+**Well done!** You've established a starting point for your organization to monitor the service performance. For additional dashboard ideas, [click here](./supplementary_information/visualization_ideas.md), and to explore different visualization styles within Grafana, [click here](./supplementary_information/visualization_inspiration.md). Once the dashboards are to your liking, you may want to consider the following next steps to enhance your operation:
 
-- **Dashboard Refinement**: Work with your teams to identify any essential metrics or insights that might be missing, and adjust the dashboard accordingly. Ensure it meets the needs of all stakeholders. [Click here](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/) to learn about dashboarding best practices.
+- **Dashboard Refinement**: Work with your teams to identify any essential metrics or insights that might be missing and adjust the dashboard accordingly. Ensure it meets the needs of all stakeholders. [Click here](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/) to learn about dashboarding best practices.
 
 - **Testing**: Simulate high data rates or errors to verify the dashboard’s effectiveness in reflecting real-time issues.
 
-- **Granular Alerting** - Utilize [Grafana's Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/) to establish alert conditions, especially those spanning multiple data sources. This reduces the need for constant dashboard monitoring. As well allows you to get a more holistic view of potential issues. [Click here](./supplementary_information/alerting_ideas.md) to get ideas for example alerts. [Click here](https://grafana.com/docs/grafana/latest/alerting/set-up/) if you want to learn how to configure an alerts.
+- **Granular Alerting** - Utilize [Grafana's Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/) to establish alert conditions, especially those spanning multiple data sources. This reduces the need for constant dashboard monitoring. It also allows you to get a more holistic view of potential issues. [Click here](./supplementary_information/alerting_ideas.md) to get ideas for configuring possible alerts. [Click here](https://grafana.com/docs/grafana/latest/alerting/set-up/) if you want to learn how to configure an alert.
 
 - **Performance Optimization** - Use monitoring insights to optimize the service's performance. Identify bottlenecks and rectify them.
 
-- **Feedback Loop**: Maintain regular communication with teams using this dashboard, to ensure the dashboard stays relevant and actionable, adjusting it based on their feedback.
+- **Feedback Loop**: Maintain regular communication with teams using this dashboard to ensure it stays relevant and actionable, adjusting it based on their feedback.
 
 # STOP HERE... WE WILL HAVE ANOTHER PRESENTATION BEFORE WE BEGIN LAB 2
