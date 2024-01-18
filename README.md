@@ -1,7 +1,7 @@
 **(UNDER REVISION DO NOT USE YET)**
 ![Grafana Logo](logo.png)
 
-# Workshop: Harnessing the Power of AWS with Grafana 
+# Workshop: Intro to Monitoring AWS Services with Grafana
 
 [Breakout 1: Getting Started with Grafana, AWS CloudWatch, and AWS X-Ray for Observing AWS Workloads](./lab_1/lab_1_instructions.md)
 
