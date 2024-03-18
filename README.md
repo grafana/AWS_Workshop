@@ -1,4 +1,3 @@
-**(UNDER REVISION DO NOT USE YET)**
 ![Grafana Logo](logo.png)
 
 # Workshop: Intro to Monitoring AWS Services with Grafana
