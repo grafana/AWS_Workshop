@@ -146,6 +146,7 @@ You should now be able to see the underlying query that makes up this panel - th
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/191763ae-a6ec-487b-accc-fdce8abc7f31/user_cropped_screenshot.jpeg?tl_px=154,51&br_px=1701,917&force_format=png&width=500.0)
 
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/eb2b9dc5-9f43-4b65-9b3a-a58e1357d66f/user_cropped_screenshot.jpeg?tl_px=228,24&br_px=2521,1305&force_format=png&width=500.0)
 
 ```Step 6:``` Now, if we want to add this to a dashboard, we could do it straight from this screen by selecting **Add** -> **Add to dashboard**. Then, you choose which dashboard to which you want to add this query, and voila.
 
