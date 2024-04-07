@@ -131,22 +131,21 @@ A common use case to leverage the AWS Integrations is for Managed AWS Services. 
 
 ```Step 4:``` Click on the dropdown that is labeled 'job'. You will notice that directly corresponds to the name given to the scrape job we setup (previous steps). You will also see filters for region and function name.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2caf81a7-09f2-4bca-ac03-6b4edc23407b/user_cropped_screenshot.jpeg?tl_px=130,0&br_px=2423,380&force_format=png&width=500.0)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2caf81a7-09f2-4bca-ac03-6b4edc23407b/user_cropped_screenshot.jpeg?tl_px=130,0&br_px=2423,380&force_format=png&width=1120.0)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/3aac486b-18c4-4fc4-bb4d-cda59c7a5fc3/user_cropped_screenshot.jpeg?tl_px=239,0&br_px=2532,547&force_format=png&width=1120.0)
 
 While these dashboards are less comprehensive than the Kubernetes integration we saw earlier. These dashboards are simply meant to give you a starting point for basic monitoring; the real power comes when we create tailored dashboards. To start this, you can easily examine the underlying query and add it to your custom dashboards.
 
 ```Step 5:``` To do so, hover over the upper right-hand side of one of the dashboard visualizations. Then click on the **three dots** and select **Explore**.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/3aac486b-18c4-4fc4-bb4d-cda59c7a5fc3/user_cropped_screenshot.jpeg?tl_px=239,0&br_px=2532,547&force_format=png&width=500.0)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/8a0a5715-23f3-48d9-b371-85d71387bf0e/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1816,910&force_format=png&width=1120.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/8a0a5715-23f3-48d9-b371-85d71387bf0e/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1816,910&force_format=png&width=500.0)
-
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/191763ae-a6ec-487b-accc-fdce8abc7f31/user_cropped_screenshot.jpeg?tl_px=154,51&br_px=1701,917&force_format=png&width=1120.0)
 
 You should now be able to see the underlying query that makes up this panel - this is PromQL! You could do the same thing with the Kubernetes dashboards we explored earlier.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/191763ae-a6ec-487b-accc-fdce8abc7f31/user_cropped_screenshot.jpeg?tl_px=154,51&br_px=1701,917&force_format=png&width=500.0)
-
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/eb2b9dc5-9f43-4b65-9b3a-a58e1357d66f/user_cropped_screenshot.jpeg?tl_px=228,24&br_px=2521,1305&force_format=png&width=500.0)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/eb2b9dc5-9f43-4b65-9b3a-a58e1357d66f/user_cropped_screenshot.jpeg?tl_px=228,24&br_px=2521,1305&force_format=png&width=1120.0)
 
 ```Step 6:``` Now, if we want to add this to a dashboard, we could do it straight from this screen by selecting **Add** -> **Add to dashboard**. Then, you choose which dashboard to which you want to add this query, and voila.
 
