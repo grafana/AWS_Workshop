@@ -29,7 +29,9 @@ Grafana Integrations make it possible to achieve a fast time to value. Integrati
 
 ```Step 2:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home**. In the main menu, expand **Infrastructure**, then click **Kubernetes**.
 
-(IMAGE)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/ab05a8e7-676e-4376-b1b0-4076a0e3f098/user_cropped_screenshot.jpeg?tl_px=0,74&br_px=1266,940&force_format=png&width=1120.0)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/ae588427-390f-4999-a867-df4012fa5e87/user_cropped_screenshot.jpeg?tl_px=126,50&br_px=1673,916&force_format=png&width=1120.0)
 
 The main Kubernetes page displays a snapshot of issues that exceed specific thresholds (and any associated alerts) for the data source chosen in the drop-down menu.
 
@@ -41,42 +43,43 @@ You can see the graphed counts for Clusters, Nodes, Pods, and containers, as wel
 
 ```Step 3:``` Now lets dive into our Clusters. On the left hand side click **Cluster navigation**.
 
-(IMAGE)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/1dfa44e8-4431-4ef7-9582-68102b040a92/user_cropped_screenshot.jpeg?tl_px=0,25&br_px=1447,891&force_format=png&width=1120.0)
 
 Here you can use seemlessly navigate from Clusters, namespaces, workloads, and Nodes through to containers.
 
-Additionally you can analyze the csot estimates for running each of the cluster/workloads/nodes.
+Additionally you can analyze the cost estimates for running each of the cluster/workloads/nodes.
 
-(IMAGE)
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/6c78d30c-e416-4af5-935a-5ff48e50b9df/user_cropped_screenshot.jpeg?tl_px=272,75&br_px=1820,940&force_format=png&width=1120.0)
 
 ```Step 4:``` Click **Namespaces** on the navigation bar. 
-(IMAGE)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/8a52026f-9513-4382-87d1-90ab3d688a44/user_cropped_screenshot.jpeg?tl_px=229,0&br_px=1777,759&force_format=png&width=1120.0)
 
 ```Step 5:``` Click on the **otel-demo** namespace. 
-(IMAGE)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/fa330182-10a7-4357-b18a-eae71d08bbb7/user_cropped_screenshot.jpeg?tl_px=537,46&br_px=2084,912&force_format=png&width=1120.0)
 
 On this page you can see the usage patterns associated with the workloads running in this particular namespace.
 
 You can also view performance over time.
 
 ```Step 6:``` At the top right hand corner change the timeframe from `Last 1 hour` to the `Last 2 days`.
-(IMAGE)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2312d9ff-4065-41f1-8484-4417704814f3/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1232,633&force_format=png&width=1120.0)
 
 Lets drill even further down into a particular workload.
 
 ```Step 7:``` Scroll down to the list of workloads and select **my-otel-demo-checkoutservice**.
-(IMAGE)
 
-Here we can see the infrastrucutre usage associated with this workload, but what if we are interested in seeing the application level details. 
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/69211459-8225-4a32-b260-35779e76ab36/user_cropped_screenshot.jpeg?tl_px=616,112&br_px=2163,978&force_format=png&width=1120.0)
+
+Here we can see the infrastructure usage associated with this workload, but what if we are interested in seeing the application level details. 
 
 ```Step 8:``` At the top click on the **View application layer** button.
-(IMAGE)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/006abdda-0b73-44ad-8073-25f5a864a9ba/user_cropped_screenshot.jpeg?tl_px=613,0&br_px=2160,516&force_format=png&width=1120.0)
 
 Now we can seemlessly go into our application layer details. One this page you will see the RED metrics associated with this service. From here you can explore things such as the Service Map, which depicts the intra relationship between our services, as well as dive into service specific logs and traces.
-
-```Step 9:```  You can also explore the traces associated with this wor
-
-Now we can seemlessly go into our application layer details.
 
 The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise.
 
