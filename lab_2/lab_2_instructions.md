@@ -129,7 +129,7 @@ A common use case to leverage the AWS Integrations is for Managed AWS Services. 
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/f5a4cb96-3066-417d-9eb0-a0ea98c352f3/user_cropped_screenshot.jpeg?tl_px=0,146&br_px=565,627&force_format=png&width=500)
 
-```Step 4:``` Click on the dropdown that is labeled 'job'. You will notice that directly corresponds to the name given to the scrape job we setup (previous steps). You will also see filters for region and function name.
+```Step 4:``` Click on the dropdown that is labeled 'job'. You will notice that directly corresponds to the name given to the scrape job we setup (previous steps). Select **prod-eccomerce** for the job value. You will also see filters for region and function name.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2caf81a7-09f2-4bca-ac03-6b4edc23407b/user_cropped_screenshot.jpeg?tl_px=130,0&br_px=2423,380&force_format=png&width=1120.0)
 
