@@ -27,49 +27,56 @@ Grafana Integrations make it possible to achieve a fast time to value. Integrati
 ```Step 1:``` Navigate to [https://awsworkshopbreakouts.grafana.net/?orgId=1](https://awsworkshopbreakouts.grafana.net/?orgId=1)
 
 
-```Step 2:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
+```Step 2:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home**. In the main menu, expand **Infrastructure**, then click **Kubernetes**.
 
-![Grafana Menu Navigation](images/menu_nav.png)
+(IMAGE)
 
-```Step 3:``` Click **Integration - Kubernetes**
+The main Kubernetes page displays a snapshot of issues that exceed specific thresholds (and any associated alerts) for the data source chosen in the drop-down menu.
 
+You can see the graphed counts for Clusters, Nodes, Pods, and containers, as well as:
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/dae3de20-61aa-46d0-88ad-261e76152588/user_cropped_screenshot.jpeg?tl_px=0,93&br_px=1305,1055&force_format=png&width=1120.0)
+- Pods that have been in a non-running state for 15 minutes or more
+- Node issues with CPU and memory usage over 90% for over 5 minutes, and disks exceeding capacity of over 90%
+- Persistent Volumes that have been using over 90% of their capacity
 
+```Step 3:``` Now lets dive into our Clusters. On the left hand side click **Cluster navigation**.
 
-```Step 4:``` Click **Kubernetes / Compute Resources / Cluster**
+(IMAGE)
 
+Here you can use seemlessly navigate from Clusters, namespaces, workloads, and Nodes through to containers.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/f7010be8-f22f-454e-8576-ec249011de03/user_cropped_screenshot.jpeg?tl_px=74,294&br_px=1364,1016&force_format=png&width=1120.0)
+Additionally you can analyze the csot estimates for running each of the cluster/workloads/nodes.
 
+(IMAGE)
 
-Notice you can adjust what renders on the page with the dropdown variables; this is great if you are looking to compare different clusters or namespaces. 
+```Step 4:``` Click **Namespaces** on the navigation bar. 
+(IMAGE)
 
+```Step 5:``` Click on the **otel-demo** namespace. 
+(IMAGE)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/7f54c9fd-332d-4bc6-8987-6560f79ffe5f/user_cropped_screenshot.jpeg?tl_px=90,0&br_px=2384,1074&force_format=png&width=1120.0&wat=1&wat_opacity=1&wat_gravity=northwest&wat_url=https://colony-recorder.s3.amazonaws.com/images/watermarks/0EA5E9_standard.png&wat_pad=1226,20)
+On this page you can see the usage patterns associated with the workloads running in this particular namespace.
 
+You can also view performance over time.
 
-Additionally, you can change the timeframe for which the dashboard renders data. Try changing it to the last 12 hours. 
+```Step 6:``` At the top right hand corner change the timeframe from `Last 1 hour` to the `Last 2 days`.
+(IMAGE)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/1cebd87b-96fd-463b-b830-1dee35f7ed8d/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1526,770&force_format=png&width=1120.0)
+Lets drill even further down into a particular workload.
 
+```Step 7:``` Scroll down to the list of workloads and select **my-otel-demo-checkoutservice**.
+(IMAGE)
 
-You can click and drag on the graph to zoom into interesting timeframes.
+Here we can see the infrastrucutre usage associated with this workload, but what if we are interested in seeing the application level details. 
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-14/ec885a75-ae9e-4dd7-aa81-6d8737374913/user_cropped_screenshot.jpeg?tl_px=262,0&br_px=2556,519&force_format=png&width=1120.0)
+```Step 8:``` At the top click on the **View application layer** button.
+(IMAGE)
 
+Now we can seemlessly go into our application layer details. One this page you will see the RED metrics associated with this service. From here you can explore things such as the Service Map, which depicts the intra relationship between our services, as well as dive into service specific logs and traces.
 
-```Step 5:``` Next, we will drill down into one of our Namespaces. Under CPU Quota, click on the Namespace = "otel-demo-obscon"
+```Step 9:```  You can also explore the traces associated with this wor
 
-
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/b3709b76-fb8c-46cc-a956-750a09223749/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2055,1103&force_format=png&width=1120.0)
-
-
-Feel free to drill down further into any pods showing in the Pod overview dashboard.
-
-
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/efce4b3c-0057-4dc5-bb54-8c587517d749/user_cropped_screenshot.jpeg?tl_px=233,0&br_px=2527,1064&force_format=png&width=1120.0)
-
+Now we can seemlessly go into our application layer details.
 
 The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise.
 
