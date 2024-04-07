@@ -325,6 +325,7 @@ fields @timestamp, @message, xrayTraceId as @xrayTraceId
 
 Now, you will see all the error logs associated with this particular log group. This is a great way to quickly see what errors are occurring in your system. Also, if you expand out the errors, you will see links that will take you directly to the AWS X-Ray trace for that particular error or to the AWS CloudWatch Console.
 
+** Please note if you get the error: trace not found, it is because AWS X-Ray does sampling of the trace data, so that trace has been sampled away. Please click the back arrow and try a different error log.
 
 This linking between the log line and the corresponding trace happens automatically if the the log line contains the [@xrayTraceId field](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#x-ray-trace-links).
 
