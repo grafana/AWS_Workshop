@@ -20,32 +20,31 @@ You have a lot of options when it comes to deploying the Grafana Agent on Kubern
 
 [Click here](https://grafana.com/docs/agent/latest/flow/setup/deploy-agent/#deploy-grafana-agent) to learn about the pros and cons of each. In this case, we installed the agent using Helm. Once the agent is installed, your telemetry data will be available to query using PromQL, LogQL, and TraceQL.
 
-The Grafana Cloud Integrations bundle Grafana Agent, tailored Grafana dashboards, and best-practice alerting defaults for common observability targets like Linux hosts, databases, and NGINX servers. Today, around 100 different technologies can be observed using integrations, and we are continually expanding that catalog.
+The Grafana Cloud Integrations bundle Grafana Agent, tailored Grafana dashboard experiences, and best-practice alerting defaults for common observability targets like Linux hosts, databases, and NGINX servers. Today, around 100 different technologies can be observed using integrations, and we are continually expanding that catalog.
 
-Grafana Integrations make it possible to achieve a fast time to value. Integrations are the easy button; it bundles exporters, the Grafana Agent, dashboards, and alerts for common systems such as Linux, k8s, SQL, etc. Integrations are a cloud-only feature; however, you can leverage the [k8s mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin) in the OSS version to achieve something similar. You can also recreate these dashboards or export them. Note that you will have to copy over the relabels in the Grafana Agent configuration and change the remote_write from a cloud instance to a self-managed one.
+Grafana Integrations make it possible to achieve a fast time to value. Integrations are the easy button; it bundles exporters, the Grafana Agent, dashboards, and alerts for common systems such as Linux, k8s, SQL, etc. Integrations are a cloud-only feature; however, you can leverage the [k8s mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin) in the OSS version to achieve something similar.
+
+In the first part of this lab, we'll dive into the Kubernetes app experience, which is designed to streamline the management of your Kubernetes environments. This app is meant to help with both reactive problem solving and proactive management, ensuring smoother operations and better resource optimization.
 
 ```Step 1:``` Navigate to [https://awsworkshopbreakouts.grafana.net/?orgId=1](https://awsworkshopbreakouts.grafana.net/?orgId=1)
 
 
-```Step 2:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home**. In the main menu, expand **Infrastructure**, then click **Kubernetes**.
+```Step 2:``` In the upper left-hand corner, open the Menu Bar by clicking on the Icon next to the word **Home**. In the main menu, expand **Infrastructure**, then click **Kubernetes**.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/d0ea0787-354a-40b6-a7a0-1956a9a0e9bf/user_cropped_screenshot.jpeg?tl_px=0,24&br_px=487,890&force_format=png&width=200)
 
-The main Kubernetes page displays a snapshot of issues that exceed specific thresholds (and any associated alerts) for the data source chosen in the drop-down menu.
+The main Kubernetes acts as your starting point for understanding the operational & infrastructure health of your Kubernetes environments. The most critical issues about unhealthy pods, nodes running out of resources, and volumes running out of capacity are bubbled up into this view. 
 
 You can see the graphed counts for Clusters, Nodes, Pods, and containers, as well as:
-
 - Pods that have been in a non-running state for 15 minutes or more
 - Node issues with CPU and memory usage over 90% for over 5 minutes, and disks exceeding capacity of over 90%
 - Persistent Volumes that have been using over 90% of their capacity
 
-```Step 3:``` Now lets dive into our Clusters. On the left hand side click **Cluster navigation**.
+```Step 3:``` Now lets dive into our Clusters view. On the left hand side click **Cluster navigation**.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/6b7f002d-fe2e-4523-8273-72404da2d851/user_cropped_screenshot.jpeg?tl_px=0,22&br_px=742,887&force_format=png&width=200)
 
-Here you can use seemlessly navigate from Clusters, namespaces, workloads, and Nodes through to containers.
-
-Additionally you can analyze the cost estimates for running each of the cluster/workloads/nodes.
+Here, you can seamlessly navigate between the various layers in your Kubernetes environments, such as namespaces, clusters, nodes, etc. Additionally, you can analyze the cost estimates for running each of the clusters/workloads/nodes.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b1e15808-b3b9-4177-ab59-220abb8a760d/user_cropped_screenshot.jpeg?tl_px=6,0&br_px=1726,579&force_format=png&width=500.0)
 
@@ -53,33 +52,35 @@ Additionally you can analyze the cost estimates for running each of the cluster/
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/67e3553d-f772-4c29-81bd-b39640428e0f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1488,601&force_format=png&width=500.0)
 
+Here, we can see an overview of the usage patterns for each of our namespaces per cluster. This is useful for understanding the resource consumption of your workloads at a high level. By clicking on a particular namespace we can get a deeper understanding of the usage breakdown.
+
 ```Step 5:``` Click on the **otel-demo** namespace. 
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/70521fa3-4f16-4671-bf9a-ed0f0052087f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2622,959&force_format=png&width=500.0)
 
-On this page you can see the usage patterns associated with the workloads running in this particular namespace.
+On this page, you can see the usage patterns associated with the workloads running in this particular namespace.
 
-You can also view performance over time.
+You can also view performance over time, such as usage over the last year, six months, 90 days, etc.
 
-```Step 6:``` At the top right hand corner change the timeframe from `Last 1 hour` to the `Last 2 days`.
+```Step 6:``` At the top right-hand corner, change the timeframe from `Last 1 hour` to the `Last 2 days`.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2312d9ff-4065-41f1-8484-4417704814f3/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1232,633&force_format=png&width=500.0)
 
-Lets drill even further down into a particular workload.
+Now let's drill down into a particular workload.
 
 ```Step 7:``` Scroll down to the list of workloads and select **my-otel-demo-checkoutservice**.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/da189308-d8ec-45d9-9c61-73a24205f53c/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2719,735&force_format=png&width=1000.0)
 
-Here we can see the infrastructure usage associated with this workload, but what if we are interested in seeing the application level details. 
+Here, we can see the infrastructure usage associated with this workload, but what if we are interested in seeing the application-level details? 
 
 ```Step 8:``` At the top click on the **View application layer** button.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b2d88944-d5d4-4ada-a0e5-aac249fa79e7/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1764,539&force_format=png&width=500.0)
 
-Now we can seemlessly go into our application layer details. One this page you will see the RED metrics associated with this service. From here you can explore things such as the Service Map, which depicts the intra relationship between our services, as well as dive into service specific logs and traces.
+Now, we can seemlessly explore our application layer details. On this page, you will see the RED metrics (rate, error, duration) associated with this service. From here, you can explore things such as the Service Map, which depicts the intra-relationship between our services, as well as dive into service-specific logs and traces.
 
-The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise.
+The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise since you are emitting consistent telemetry data from each environment.
 
 [Click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/) if you want to learn more about what is available with the Kubernetes Integration.
 
