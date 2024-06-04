@@ -26,90 +26,96 @@ Grafana Integrations make it possible to achieve a fast time to value. Integrati
 
 In the first part of this lab, we'll dive into the Kubernetes app experience, which is designed to streamline the management of your Kubernetes environments. This app is meant to help with both reactive problem solving and proactive management, ensuring smoother operations and better resource optimization.
 
-```Step 1:``` Navigate to [https://awsworkshopbreakouts.grafana.net/?orgId=1](https://awsworkshopbreakouts.grafana.net/?orgId=1)
+1.  Navigate to the Grafana Cloud instance you were provided with at the start of the workshop.
 
+1.  In the upper left-hand corner, open the Menu Bar by clicking on the Menu/Burger icon next to the word **Home**. In the main menu, expand **Infrastructure**, then click **Kubernetes**.
 
-```Step 2:``` In the upper left-hand corner, open the Menu Bar by clicking on the Icon next to the word **Home**. In the main menu, expand **Infrastructure**, then click **Kubernetes**.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/d0ea0787-354a-40b6-a7a0-1956a9a0e9bf/user_cropped_screenshot.jpeg?tl_px=0,24&br_px=487,890&force_format=png&width=200)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/d0ea0787-354a-40b6-a7a0-1956a9a0e9bf/user_cropped_screenshot.jpeg?tl_px=0,24&br_px=487,890&force_format=png&width=200)
+    The main Kubernetes acts as your starting point for understanding the operational & infrastructure health of your Kubernetes environments. The most critical issues about unhealthy pods, nodes running out of resources, and volumes running out of capacity are bubbled up into this view. 
 
-The main Kubernetes acts as your starting point for understanding the operational & infrastructure health of your Kubernetes environments. The most critical issues about unhealthy pods, nodes running out of resources, and volumes running out of capacity are bubbled up into this view. 
+    You can see the graphed counts for Clusters, Nodes, Pods, and containers, as well as:
+    
+    - Pods that have been in a non-running state for 15 minutes or more
+    - Node issues with CPU and memory usage over 90% for over 5 minutes, and disks exceeding capacity of over 90%
+    - Persistent Volumes that have been using over 90% of their capacity
 
-You can see the graphed counts for Clusters, Nodes, Pods, and containers, as well as:
-- Pods that have been in a non-running state for 15 minutes or more
-- Node issues with CPU and memory usage over 90% for over 5 minutes, and disks exceeding capacity of over 90%
-- Persistent Volumes that have been using over 90% of their capacity
+1.  Now lets dive into our Clusters view. Click on the **Cluster count** panel, or, from the left hand menu click **Cluster navigation**.
 
-```Step 3:``` Now lets dive into our Clusters view. On the left hand side click **Cluster navigation**.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/6b7f002d-fe2e-4523-8273-72404da2d851/user_cropped_screenshot.jpeg?tl_px=0,22&br_px=742,887&force_format=png&width=200)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/6b7f002d-fe2e-4523-8273-72404da2d851/user_cropped_screenshot.jpeg?tl_px=0,22&br_px=742,887&force_format=png&width=200)
+    Here, you can seamlessly navigate between the various layers in your Kubernetes environments, such as namespaces, clusters, nodes, etc. Additionally, you can analyze the cost estimates for running each of the clusters/workloads/nodes.
 
-Here, you can seamlessly navigate between the various layers in your Kubernetes environments, such as namespaces, clusters, nodes, etc. Additionally, you can analyze the cost estimates for running each of the clusters/workloads/nodes.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b1e15808-b3b9-4177-ab59-220abb8a760d/user_cropped_screenshot.jpeg?tl_px=6,0&br_px=1726,579&force_format=png&width=500.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b1e15808-b3b9-4177-ab59-220abb8a760d/user_cropped_screenshot.jpeg?tl_px=6,0&br_px=1726,579&force_format=png&width=500.0)
+1.  Click **Namespaces** on the navigation bar. 
 
-```Step 4:``` Click **Namespaces** on the navigation bar. 
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/67e3553d-f772-4c29-81bd-b39640428e0f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1488,601&force_format=png&width=500.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/67e3553d-f772-4c29-81bd-b39640428e0f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1488,601&force_format=png&width=500.0)
+    Here, we can see an overview of the usage patterns for each of our namespaces per cluster. This is useful for understanding the resource consumption of your workloads at a high level. By clicking on a particular namespace we can get a deeper understanding of the usage breakdown.
 
-Here, we can see an overview of the usage patterns for each of our namespaces per cluster. This is useful for understanding the resource consumption of your workloads at a high level. By clicking on a particular namespace we can get a deeper understanding of the usage breakdown.
+1.  Click on the **otel-demo** or **ditl-demo-prod** namespace. 
 
-```Step 5:``` Click on the **otel-demo** namespace. 
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/70521fa3-4f16-4671-bf9a-ed0f0052087f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2622,959&force_format=png&width=500.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/70521fa3-4f16-4671-bf9a-ed0f0052087f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2622,959&force_format=png&width=500.0)
+    On this page, you can see the usage patterns associated with the workloads running in this particular namespace.
 
-On this page, you can see the usage patterns associated with the workloads running in this particular namespace.
+    You can also view performance over time, such as usage over the last year, six months, 90 days, etc.
 
-You can also view performance over time, such as usage over the last year, six months, 90 days, etc.
+1.  At the top right-hand corner, change the timeframe from `Last 1 hour` to the `Last 2 days`.
 
-```Step 6:``` At the top right-hand corner, change the timeframe from `Last 1 hour` to the `Last 2 days`.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2312d9ff-4065-41f1-8484-4417704814f3/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1232,633&force_format=png&width=500.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2312d9ff-4065-41f1-8484-4417704814f3/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1232,633&force_format=png&width=500.0)
+    Now let's drill down into a particular workload.
 
-Now let's drill down into a particular workload.
+1.  Scroll down to the list of workloads and select **checkoutservice-ditl-demo-prod** or **my-otel-demo-checkoutservice**:
 
-```Step 7:``` Scroll down to the list of workloads and select **my-otel-demo-checkoutservice**.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/da189308-d8ec-45d9-9c61-73a24205f53c/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2719,735&force_format=png&width=1000.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/da189308-d8ec-45d9-9c61-73a24205f53c/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2719,735&force_format=png&width=1000.0)
+    Here, we can see the infrastructure usage associated with this workload, but what if we are interested in seeing the application-level details? 
 
-Here, we can see the infrastructure usage associated with this workload, but what if we are interested in seeing the application-level details? 
+1.  At the top click on the **View application layer** button.
 
-```Step 8:``` At the top click on the **View application layer** button.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b2d88944-d5d4-4ada-a0e5-aac249fa79e7/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1764,539&force_format=png&width=500.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b2d88944-d5d4-4ada-a0e5-aac249fa79e7/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1764,539&force_format=png&width=500.0)
+    Now, we can seemlessly explore our application layer details. On this page, you will see the RED metrics (rate, error, duration) associated with this service. From here, you can explore things such as the Service Map, which depicts the intra-relationship between our services, as well as dive into service-specific logs and traces.
 
-Now, we can seemlessly explore our application layer details. On this page, you will see the RED metrics (rate, error, duration) associated with this service. From here, you can explore things such as the Service Map, which depicts the intra-relationship between our services, as well as dive into service-specific logs and traces.
+    The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise since you are emitting consistent telemetry data from each environment.
 
-The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise since you are emitting consistent telemetry data from each environment.
-
-[Click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/) if you want to learn more about what is available with the Kubernetes Integration.
+    [Click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/) if you want to learn more about what is available with the Kubernetes Integration.
 
 ## Section 2: Shipping Data from CloudWatch
 Sometimes, installing an agent on AWS services is not possible. This is true for many AWS Managed Services. The idea is that they are managed so your burden of responsibility shifts when observing your applications. 
 
 This is where the AWS integration comes in. The AWS integration type lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without deploying or installing any local agents or configurations. Users only need to connect to their AWS account via the Grafana Cloud UI. 
 
-*****Note:** *we have already done these steps, so data will be available for you to query. Once you set up the integration, data flows from that point forward into your Grafana Cloud telemetry databases.*
+Once you set up the integration, data flows from that point forward into your Grafana Cloud telemetry databases.
 
-```Step 1:``` Create a new role in AWS. This can be done automatically via CloudFormation, or you can do so manually.
+**Note: The configuration of the AWS integration has been done for you already. You don't need to complete the following section. Read on to find out how to set up the CloudWatch integration in your own environment.**
 
-![Grafana Login Page](images/step1.png)
+AWS integration setup (for information only):
 
-```Step 2:``` Input the connection details to your AWS account. These will be outputs in the CloudFormation stack or you can find them in the AWS console.
+1.  Create a new role in AWS. This can be done automatically via CloudFormation, or you can do so manually.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/57931064-947c-49d3-86d8-e3cbed6ba1b5/user_cropped_screenshot.jpeg?tl_px=25,0&br_px=1745,844&force_format=png&width=1120.0)
+    ![Grafana Login Page](images/step1.png)
 
-*****Note:** *you can optionally include your AWS Resource Tags in the data sent to Grafana Cloud (ex, env, application). Tags will appear as labels on the exported metric with a tag_ prefix. [Click here](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html) to learn more about the benefits of tagging your AWS resources if you do not already.*
+1.  Input the connection details to your AWS account. These will be outputs in the CloudFormation stack or you can find them in the AWS console.
 
-```Step 3:``` Next, you will configure which services you want to pull metrics from and what metrics/aggregates you want to ingest.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/57931064-947c-49d3-86d8-e3cbed6ba1b5/user_cropped_screenshot.jpeg?tl_px=25,0&br_px=1745,844&force_format=png&width=1120.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/6141c887-229f-4bf1-9939-9aac04610277/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2058,1182&force_format=png&width=1120.0)
+    *****Note:** *you can optionally include your AWS Resource Tags in the data sent to Grafana Cloud (e.g. env, application). Tags will appear as labels on the exported metric with a tag_ prefix. [Click here](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html) to learn more about the benefits of tagging your AWS resources if you do not already.*
 
-```Step 4:``` Once you have configured what metrics to scrape, press 'Create Scrape Job' and Grafana will begin pulling in your metrics... it's that easy!
+1.  Next, you will configure which services you want to pull metrics from and what metrics/aggregates you want to ingest.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/6141c887-229f-4bf1-9939-9aac04610277/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2058,1182&force_format=png&width=1120.0)
 
-You can create any number of job configurations dictating which services, regions, and AWS accounts to collect metrics/logs from. 
+1.  Once you have configured what metrics to scrape, press 'Create Scrape Job' and Grafana will begin pulling in your metrics... it's that easy!
+
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/01c09c6d-c047-46ea-b96b-338dee1f9653/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1368,555&force_format=png&width=1120.0)
+
+    You can create any number of job configurations dictating which services, regions, and AWS accounts to collect metrics/logs from. 
+
+### How it works
 
 Keep in mind what you are configuring here is pulling in CloudWatch data into Grafana Mimir (Prometheus) and Grafana Loki (Prometheus but for logs) – allowing users to interact with and explore this data using the same query language, dashboards, alerts, etc. This provides a consistent way for end users to query their data and reduces the cost variability with querying/surfacing metrics and logs from the [CloudWatch API](https://aws.amazon.com/cloudwatch/pricing/) via the Plugin (lab 1).
 
@@ -118,39 +124,43 @@ Once the data is in the Grafana Cloud telemetry backend, there are no additional
 ### Exploring the Collected Data
 A common use case to leverage the AWS Integrations is for Managed AWS Services. Often, those do not have a way to ship your telemetry directly to other backends. In this lab part, we will look at one of the prebuilt dashboards that comes out of the box.
 
-```Step 1:``` In the upper left-hand corner, open up the Menu Bar by clicking on the Icon next to the word **Home** -> **Dashboards**
+1.  In the upper left-hand corner, open up the Menu Bar by clicking on the Menu/Burger icon next to the word **Home** -> **Dashboards**
 
-![Grafana Menu Navigation](images/menu_nav.png)
+    ![Grafana Menu Navigation](images/menu_nav.png)
 
-```Step 2:``` Select "Integration - CloudWatch Metrics"
+1.  Select "Integration - CloudWatch Metrics"
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/7ce00cc7-4167-4ad2-b300-e233aa56dfb6/user_cropped_screenshot.jpeg?tl_px=0,19&br_px=601,452&force_format=png&width=500)
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/7ce00cc7-4167-4ad2-b300-e233aa56dfb6/user_cropped_screenshot.jpeg?tl_px=0,19&br_px=601,452&force_format=png&width=500)
 
-```Step 3:``` Select "AWS Lambda"
+1.  Select "AWS Lambda"
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/f5a4cb96-3066-417d-9eb0-a0ea98c352f3/user_cropped_screenshot.jpeg?tl_px=0,146&br_px=565,627&force_format=png&width=500)
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/f5a4cb96-3066-417d-9eb0-a0ea98c352f3/user_cropped_screenshot.jpeg?tl_px=0,146&br_px=565,627&force_format=png&width=500)
 
-```Step 4:``` Click on the dropdown that is labeled 'job'. You will notice that directly corresponds to the name given to the scrape job we setup (previous steps). Select **prod-eccomerce** for the job value. You will also see filters for region and function name.
+1.  Click on the dropdown that is labeled 'job'. You will notice that directly corresponds to the name given to the scrape job we setup (previous steps). Select **prod-ecommerce** for the job value. You will also see filters for _region_ and _function name_.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2caf81a7-09f2-4bca-ac03-6b4edc23407b/user_cropped_screenshot.jpeg?tl_px=130,0&br_px=2423,380&force_format=png&width=1120.0)
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2caf81a7-09f2-4bca-ac03-6b4edc23407b/user_cropped_screenshot.jpeg?tl_px=130,0&br_px=2423,380&force_format=png&width=1120.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/3aac486b-18c4-4fc4-bb4d-cda59c7a5fc3/user_cropped_screenshot.jpeg?tl_px=239,0&br_px=2532,547&force_format=png&width=1120.0)
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/3aac486b-18c4-4fc4-bb4d-cda59c7a5fc3/user_cropped_screenshot.jpeg?tl_px=239,0&br_px=2532,547&force_format=png&width=1120.0)
 
-While these dashboards are less comprehensive than the Kubernetes integration we saw earlier. These dashboards are simply meant to give you a starting point for basic monitoring; the real power comes when we create tailored dashboards. To start this, you can easily examine the underlying query and add it to your custom dashboards.
+    While these dashboards are less comprehensive than the Kubernetes integration we saw earlier, they give you a starting point for basic monitoring. 
+    
+    The real power comes when we create tailored dashboards. To start this, you can easily examine the underlying query and add it to your custom dashboards.
 
-```Step 5:``` To do so, hover over the upper right-hand side of one of the dashboard visualizations. Then click on the **three dots** and select **Explore**.
+1.  Let's add a panel to a custom dashboard.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/8a0a5715-23f3-48d9-b371-85d71387bf0e/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1816,910&force_format=png&width=1120.0)
+    Hover over the upper right-hand side of one of the dashboard visualizations. Then click on the **three dots** and select **Explore**.
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/191763ae-a6ec-487b-accc-fdce8abc7f31/user_cropped_screenshot.jpeg?tl_px=154,51&br_px=1701,917&force_format=png&width=1120.0)
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/8a0a5715-23f3-48d9-b371-85d71387bf0e/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1816,910&force_format=png&width=1120.0)
 
-You should now be able to see the underlying query that makes up this panel - this is PromQL! You could do the same thing with the Kubernetes dashboards we explored earlier.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/191763ae-a6ec-487b-accc-fdce8abc7f31/user_cropped_screenshot.jpeg?tl_px=154,51&br_px=1701,917&force_format=png&width=1120.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/eb2b9dc5-9f43-4b65-9b3a-a58e1357d66f/user_cropped_screenshot.jpeg?tl_px=228,24&br_px=2521,1305&force_format=png&width=1120.0)
+    You should now be able to see the underlying query that makes up this panel - this is PromQL! You could do the same thing with the Kubernetes dashboards we explored earlier.
 
-```Step 6:``` Now, if we want to add this to a dashboard, we could do it straight from this screen by selecting **Add** -> **Add to dashboard**. Then, you choose which dashboard to which you want to add this query, and voila.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/eb2b9dc5-9f43-4b65-9b3a-a58e1357d66f/user_cropped_screenshot.jpeg?tl_px=228,24&br_px=2521,1305&force_format=png&width=1120.0)
 
-![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/1ecb53ae-2b63-4f97-9592-646d12e84a3d/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1096,807&force_format=png&width=500.0)
+1.  Now, if we want to add this to a dashboard, we could do it straight from this screen by selecting **Add** -> **Add to dashboard**. Then, you choose which dashboard to which you want to add this query, and voila.
+
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-16/1ecb53ae-2b63-4f97-9592-646d12e84a3d/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1096,807&force_format=png&width=500.0)
 
 
 ### Part 3: Unified Monitoring with Grafana - The First Pane of Glass
