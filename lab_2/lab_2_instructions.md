@@ -44,21 +44,28 @@ In the first part of this lab, we'll dive into the Kubernetes app experience, wh
 
     ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/6b7f002d-fe2e-4523-8273-72404da2d851/user_cropped_screenshot.jpeg?tl_px=0,22&br_px=742,887&force_format=png&width=200)
 
-    Here, you can seamlessly navigate between the various layers in your Kubernetes environments, such as namespaces, clusters, nodes, etc. Additionally, you can analyze the cost estimates for running each of the clusters/workloads/nodes.
+1.  From here, click on the **cluster** in the list:
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b1e15808-b3b9-4177-ab59-220abb8a760d/user_cropped_screenshot.jpeg?tl_px=6,0&br_px=1726,579&force_format=png&width=500.0)
+    ![](./images/k8s_cluster.png)
 
-1.  Click **Namespaces** on the navigation bar. 
+    You will be able to see all of the details of this Kubernetes cluster, which is an AWS EKS cluster. You can see cluster details like:
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/67e3553d-f772-4c29-81bd-b39640428e0f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1488,601&force_format=png&width=500.0)
+    - nodes
+    - Kubelet and Kubeproxy version
+    - OS variant
+    - container runtime
+    - CPU usage and capacity
+    - memory usage and capacity
 
-    Here, we can see an overview of the usage patterns for each of our namespaces per cluster. This is useful for understanding the resource consumption of your workloads at a high level. By clicking on a particular namespace we can get a deeper understanding of the usage breakdown.
+1.  Scroll down to the nodes list and choose a **node** in the cluster:
 
-1.  Click on the **otel-demo** or **ditl-demo-prod** namespace. 
+    ![](./images/k8s_node.png)
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/70521fa3-4f16-4671-bf9a-ed0f0052087f/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2622,959&force_format=png&width=500.0)
+1.  Now we can see all pods running on this node, their status and namespace. Pick any pod that's running in the **ditl-demo-prod** or **otel-demo** namespace:
 
-    On this page, you can see the usage patterns associated with the workloads running in this particular namespace.
+    ![](./images/k8s_pod.png)
+
+1.  On this page, you can see the CPU and memory usage of this Pod. 
 
     You can also view performance over time, such as usage over the last year, six months, 90 days, etc.
 
@@ -66,23 +73,23 @@ In the first part of this lab, we'll dive into the Kubernetes app experience, wh
 
     ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2312d9ff-4065-41f1-8484-4417704814f3/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1232,633&force_format=png&width=500.0)
 
-    Now let's drill down into a particular workload.
+    Observe how we can see the health of this pod over the last 2 days.
 
-1.  Scroll down to the list of workloads and select **checkoutservice-ditl-demo-prod** or **my-otel-demo-checkoutservice**:
-
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/da189308-d8ec-45d9-9c61-73a24205f53c/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=2719,735&force_format=png&width=1000.0)
-
-    Here, we can see the infrastructure usage associated with this workload, but what if we are interested in seeing the application-level details? 
-
-1.  At the top click on the **View application layer** button.
+1.  Making sure you've selected a **ditl-demo** or **otel-demo** pod, scroll to the top and click on the **View application layer** button.
 
     ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/b2d88944-d5d4-4ada-a0e5-aac249fa79e7/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1764,539&force_format=png&width=500.0)
 
-    Now, we can seemlessly explore our application layer details. On this page, you will see the RED metrics (rate, error, duration) associated with this service. From here, you can explore things such as the Service Map, which depicts the intra-relationship between our services, as well as dive into service-specific logs and traces.
+1.  Now, we can seemlessly explore our application layer details. On this page, you will see the RED metrics (rate, error, duration) associated with this service. 
 
-    The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise since you are emitting consistent telemetry data from each environment.
+    ![](./images/appo11y.png)
 
-    [Click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/) if you want to learn more about what is available with the Kubernetes Integration.
+    From here, you can explore things such as the Service Map, which depicts the intra-relationship between our services, as well as dive into service-specific logs and traces.
+
+    ![](./images/servicemap.png)
+
+The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise since you are emitting consistent telemetry data from each environment.
+
+[Click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/) if you want to learn more about what is available with the Kubernetes Integration.
 
 ## Section 2: Shipping Data from CloudWatch
 Sometimes, installing an agent on AWS services is not possible. This is true for many AWS Managed Services. The idea is that they are managed so your burden of responsibility shifts when observing your applications. 
