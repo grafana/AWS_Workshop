@@ -65,17 +65,21 @@ In the first part of this lab, we'll dive into the Kubernetes app experience, wh
 
     The Workloads view will be displayed. We can see all our workloads, across all clusters.
 
-1.  From the Workloads view, click on the workload that starts with the name `accountingservice`:
+1.  From the Workloads view, click on the workload that starts with the name `checkoutservice`:
 
-    ![](./images/k8s_workloads.png)
+    ![](./images/k8s_workloads_checkoutsvc.png)
 
-1.  From the `accountingservice` workload view, we can see aggregated metrics of this workload, from the infrastructure layer. We can see CPU, memory usage and cost.
+    The workload view will be displayed.
 
-    Scroll down to the list of Pods at the bottom of this page and click on the Pod name to drill into it:
+1.  From the `checkoutservice` workload view, we can see aggregated metrics of this workload, from the infrastructure layer. We can see CPU, memory usage and cost.
+
+    ![](./images/k8s_workload_view.png)
+
+1.  Scroll down to the list of Pods at the bottom of this page and click on the Pod name to drill into it:
 
     ![](./images/k8s_workload_pod.png)
 
-1.  In the Pod view, you can see the CPU and memory usage of this Pod. 
+1.  In the Pod view, you can see the CPU and memory usage of this Pod. We can also view Logs from the Pod.
 
     You can also view performance over time, such as usage over the last year, six months, 90 days, etc.
 
@@ -85,15 +89,15 @@ In the first part of this lab, we'll dive into the Kubernetes app experience, wh
 
     ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2312d9ff-4065-41f1-8484-4417704814f3/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1232,633&force_format=png&width=500.0)
 
-    Observe how we can see the health of this pod over the last 2 days.
+    Notice how we can view the health of this pod over the last 2 days.
 
 [Click here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/navigate-k8s-monitoring/) if you want to learn more about what is available with the Kubernetes Integration.
 
-Next we'll look at how we can observe the application layer in our Kubernetes cluster.
+Next we'll look at how we can observe application-level metrics from the services that are deployed in our Kubernetes cluster.
 
 ### 1.2: Application Observability
 
-In our demonstration EKS cluster, we have also instrumented our applications to send traces to Grafana Cloud. This completes our observability picture by allowing us to see health at the application layer, through metrics, logs and traces.
+In our demonstration EKS cluster, we have instrumented our applications to collect and send traces to Grafana Cloud. This completes our observability picture by allowing us to see health at the application layer, through metrics, logs and traces.
 
 1.  From the side menu in Grafana, click on **Application** to navigate to Application Observability.
 
