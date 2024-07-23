@@ -165,7 +165,7 @@ A common use case to leverage the AWS Integrations is for Managed AWS Services. 
 
     ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/191763ae-a6ec-487b-accc-fdce8abc7f31/user_cropped_screenshot.jpeg?tl_px=154,51&br_px=1701,917&force_format=png&width=1120.0)
 
-    You should now be able to see the underlying query that makes up this panel - this is PromQL! You could do the same thing with the Kubernetes dashboards we explored earlier.
+    You should now be able to see the underlying query that makes up this panel - this is PromQL, the Prometheus query language. We're using PromQL to query our Grafana Cloud Metrics data source directly, as it now contains CloudWatch metrics that are being pulled from AWS, thanks to the AWS integration.
 
     ![](./images/cw_lambda_query.png)
 
