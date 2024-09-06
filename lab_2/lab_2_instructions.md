@@ -26,7 +26,7 @@ Integrations are a cloud-only feature; however, you can leverage the [k8s mixin]
 
 For this lab, we already installed Grafana Alloy into our EKS cluster using the [Kubernetes Monitoring Helm chart](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/configuration/helm-chart-config/helm-chart/). Once Alloy is installed, your telemetry data will be available to query using PromQL, LogQL, and TraceQL.
 
-In the first part of this lab, we'll dive into the Kubernetes app experience, which is streamlines the management of your Kubernetes environments. The app helps with both reactive problem solving and proactive management, ensuring smoother operations and better resource optimization.
+In the first part of this lab, we'll dive into the Kubernetes app experience, which streamlines the management of your Kubernetes environments. The app helps with both reactive problem solving and proactive management, ensuring smoother operations and better resource optimization.
 
 1.  Navigate to the Grafana Cloud instance you were provided with at the start of the workshop.
 
