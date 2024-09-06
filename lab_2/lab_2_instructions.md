@@ -1,10 +1,14 @@
-# Breakout 2: Leveraging Prometheus Style Telemetry Data Stores with OpenTelemetry
+# Breakout 2: Monitoring with the Grafana Cloud AWS integration
 
 ## Introduction
 
-The goal of this lab is to guide you through visualizing and monitoring your systems using Grafana Metrics, Logs, and Traces using the Cloud Watch Integration and Grafana Agent in Grafana Cloud.
+The goal of this lab is to guide you through visualizing and monitoring your systems using the Grafana Cloud AWS integration and Grafana Cloud Metrics.
 
-As you have just learned, there are two primary ways to send your Telemetry data from your AWS account to Grafana backends. One is via the direct installation of an agent onto your server (i.e., Amazon EC2 or Amazon EKS). The other option is to ship your data via the AWS Integration, which lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without deploying or installing individual agents or configurations.
+As you have just learned, there are two primary ways to send your telemetry data from your AWS account to Grafana Cloud backends:
+
+- Direct installation of an agent onto your server (i.e., Amazon EC2 or Amazon EKS).
+
+- Or, collect your data via the AWS Integration, which lets you connect and pull your AWS CloudWatch metrics into Grafana Cloud, without deploying or installing individual agents or configurations.
 
 ## Section 1: Shipping from Infrastructure Directly
 To ship from infrastructure directly, you will install an agent onto your server. We often find customers installing the agent on their workloads running on Amazon Elastic Compute Cloud (EC2), Amazon Elastic Container Service (ECS), and Amazon Elastic Kubernetes Service (EKS) on EC2, AWS Fargate, and AWS Lambda, as well as on-premises.
@@ -13,18 +17,16 @@ This allows you to have fine-tuned control over what telemetry data you are ship
 
 Let's take a look at this in action!
 
-### 1.1: Using, Migrating, and Creating Dashboards in Kubernetes Monitoring
-This first activity will reference data from a Kubernetes Service (i.e., Amazon EKS). 
+### 1.1: Monitoring Kubernetes clusters
+In this first activity, you will use data being collected from an application running on Kubernetes, specifically Amazon Elastic Kubernetes Service (EKS). 
 
-You have a lot of options when it comes to deploying the Grafana Agent on Kubernetes. For example, you can run the agent as a centralized collection service (K8s StatefulSets), host daemon (K8s DaemonSets), or container sidecar.
+To ship telemetry from your own Kubernetes clusters, you can follow the guides in Grafana Cloud's **Integrations** catalog. Grafana Cloud Integrations bundle Grafana Alloy configuration, tailored Grafana dashboard experiences, and best-practice alerting defaults for common observability targets like Linux hosts, databases, Kubernetes clusters and NGINX servers. Today, around 100 different technologies can be observed using integrations, and we are continually expanding that catalog.
 
-[Click here](https://grafana.com/docs/agent/latest/flow/setup/deploy-agent/#deploy-grafana-agent) to learn about the pros and cons of each. In this case, we installed the agent using Helm. Once the agent is installed, your telemetry data will be available to query using PromQL, LogQL, and TraceQL.
+Integrations are a cloud-only feature; however, you can leverage the [k8s mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin) in the OSS version to achieve something similar.
 
-The Grafana Cloud Integrations bundle Grafana Agent, tailored Grafana dashboard experiences, and best-practice alerting defaults for common observability targets like Linux hosts, databases, and NGINX servers. Today, around 100 different technologies can be observed using integrations, and we are continually expanding that catalog.
+For this lab, we already installed Grafana Alloy into our EKS cluster using the [Kubernetes Monitoring Helm chart](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/kubernetes-monitoring/configuration/helm-chart-config/helm-chart/). Once Alloy is installed, your telemetry data will be available to query using PromQL, LogQL, and TraceQL.
 
-Grafana Integrations make it possible to achieve a fast time to value. Integrations are the easy button; it bundles exporters, the Grafana Agent, dashboards, and alerts for common systems such as Linux, k8s, SQL, etc. Integrations are a cloud-only feature; however, you can leverage the [k8s mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin) in the OSS version to achieve something similar.
-
-In the first part of this lab, we'll dive into the Kubernetes app experience, which is designed to streamline the management of your Kubernetes environments. This app is meant to help with both reactive problem solving and proactive management, ensuring smoother operations and better resource optimization.
+In the first part of this lab, we'll dive into the Kubernetes app experience, which streamlines the management of your Kubernetes environments. The app helps with both reactive problem solving and proactive management, ensuring smoother operations and better resource optimization.
 
 1.  Navigate to the Grafana Cloud instance you were provided with at the start of the workshop.
 
@@ -61,7 +63,7 @@ In the first part of this lab, we'll dive into the Kubernetes app experience, wh
 
     ![](./images/k8s_node2.png)
 
-1.  Now let's take a look at some of the workloads running on our cluster. From the sidebar, click on **Infrastructure &rarr; Kubernetes &rarr; Workloads**
+1.  We've seen metrics from our Kubernetes cluster's infrastructure layer. Now let's take a look at some of the workloads running on our cluster. From the sidebar, click on **Infrastructure &rarr; Kubernetes &rarr; Workloads**
 
     The Workloads view will be displayed. We can see all our workloads, across all clusters.
 
@@ -97,7 +99,7 @@ Next we'll look at how we can observe application-level metrics from the service
 
 ### 1.2: Application Observability
 
-In our demonstration EKS cluster, we have instrumented our applications to collect and send traces to Grafana Cloud. This completes our observability picture by allowing us to see health at the application layer, through metrics, logs and traces.
+In our demonstration EKS cluster, we have instrumented our applications to collect and send OpenTelemetry traces to Grafana Cloud. This enhances our observability picture by allowing us to see health at the application layer, through metrics, logs and traces.
 
 1.  From the side menu in Grafana, click on **Application** to navigate to Application Observability.
 
@@ -111,61 +113,61 @@ In our demonstration EKS cluster, we have instrumented our applications to colle
 
     ![](./images/appo11y_home.png)
 
-1.  Now, we can explore application health for our Checkout service. On this page, you will see the RED metrics (rate, error, duration) associated with this service. 
-
-    Further down the page, you can also see the automatically discovered operations of this service, and associated services.
+1.  Now, we can view application health for our Checkout service. On this page, you will see the RED metrics (rate, error, duration) associated with this service. 
 
     ![](./images/appo11y.png)
 
-1.  Return to the top of the page and click on the Service Map tab. This depicts the relationship between our services, as well as allowing us to dive into service-specific logs and traces.
+    Scroll down the page to view the operations of this service, and associated services.
+
+1.  Return to the top of the page and click on the **Service Map** tab. This depicts the relationship between our services, as well as allowing us to dive into service-specific logs and traces.
 
     ![](./images/servicemap.png)
 
 The advantage of using Grafana backends in hybrid environments becomes apparent when using these types of dashboards; this is because you can leverage the same dashboards, alerts, and flows for similarly hosted workloads regardless of whether they are in the cloud or on-premise since you are emitting consistent telemetry data from each environment.
 
-## Section 2: Shipping Data from CloudWatch
-Sometimes, installing an agent on AWS services is not possible. This is true for many AWS Managed Services. The idea is that they are managed so your burden of responsibility shifts when observing your applications. 
+## Section 2: AWS Observability
+Sometimes, installing an agent on AWS services is not possible. This is true for many AWS cloud services. 
 
-This is where the AWS integration comes in. The AWS integration type lets users connect and pull their AWS CloudWatch metrics into Grafana Cloud without deploying or installing any local agents or configurations. Users only need to connect to their AWS account via the Grafana Cloud UI. 
+This is where AWS Observability for Grafana Cloud comes in. AWS Observability allows you to connect and pull AWS CloudWatch metrics, and logs, into Grafana Cloud, without deploying or installing any local exporters or agents. You need to only connect to your AWS account via the Grafana Cloud UI, and Grafana Cloud does the rest.
 
-Once you set up the integration, data flows from that point forward into your Grafana Cloud telemetry databases.
+Once you initialize the AWS Observability integration, data will be collected from your AWS account into your Grafana Cloud telemetry databases.
 
-**In this lab environment, we have already configured Grafana Cloud's AWS integration for you. If you want to see how it is done, jump to the appendix at the end of this document.**
+**In this lab environment, we have already configured Grafana Cloud's AWS integration for you. If you want to see how to configure it in your own environment, jump to the appendix at the end of this document.**
 
 ### Exploring data collected from CloudWatch
-A common use case to leverage the AWS Integrations is for Managed AWS Services. Often, those do not have a way to ship your telemetry directly to other backends. In this lab part, we will look at one of the prebuilt dashboards that comes out of the box.
+A common use case for Grafana Cloud's AWS integration is to monitor Managed AWS Services.
 
-1.  In the upper left-hand corner, open up the Menu Bar by clicking on the Menu/Burger icon next to the word **Home** -> **Dashboards**
+In this lab part, we will look at the **AWS Observability app** in Grafana Cloud, which helps you monitor your AWS managed services, without the need for local agents, exporters, or instrumentation libraries.
+
+1.  In the upper left-hand corner, open up the Menu Bar by clicking on the Menu/Burger icon next to the word **Home** -> **Cloud provider** -> **AWS**:
 
     ![Grafana Menu Navigation](images/menu_nav.png)
 
-1.  Select "Integration - CloudWatch Metrics"
+1.  From the AWS screen, click on the dashboard icon by **AWS Lambda**:
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/7ce00cc7-4167-4ad2-b300-e233aa56dfb6/user_cropped_screenshot.jpeg?tl_px=0,19&br_px=601,452&force_format=png&width=500)
+    ![AWS app home screen](images/awsapp_lambda.png)
 
-1.  Select "AWS Lambda"
+1.  The AWS Lambda screen shows us a view of all the Lambda functions from our AWS Account.
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-15/f5a4cb96-3066-417d-9eb0-a0ea98c352f3/user_cropped_screenshot.jpeg?tl_px=0,146&br_px=565,627&force_format=png&width=500)
+    ![Viewing metrics from all Lambda functions](images/awsapp_lambda_all.png)
 
-1.  Click on the dropdown that is labeled 'job'. You will notice that directly corresponds to the name given to the scrape job we setup (previous steps). Select **prod-ecommerce** for the job value. You will also see filters for _region_ and _function name_.
+1.  Click on the dropdown labelled **Function name** and choose **getRecommendations**. Now we see some high-level RED metrics for our 'getRecommendations' Lambda function.
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/2caf81a7-09f2-4bca-ac03-6b4edc23407b/user_cropped_screenshot.jpeg?tl_px=130,0&br_px=2423,380&force_format=png&width=1120.0)
+    ![Viewing an individual Lambda function](images/awsapp_lambda_function.png)
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/3aac486b-18c4-4fc4-bb4d-cda59c7a5fc3/user_cropped_screenshot.jpeg?tl_px=239,0&br_px=2532,547&force_format=png&width=1120.0)
-
-    While these dashboards are less comprehensive than the Kubernetes integration we saw earlier, they give you a starting point for basic monitoring. 
-    
     The real power comes when we create tailored dashboards. To start this, you can easily examine the underlying query and add it to your custom dashboards.
 
-1.  Let's add a panel to a custom dashboard.
+1.  Let's explore the underlying data, and see how to add a panel to a custom dashboard.
 
-    Hover over the upper right-hand side of one of the dashboard visualizations. Then click on the **three dots** and select **Explore**.
+    In the **Function name** dropdown, make sure you've got **getRecommendations** selected.
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/8a0a5715-23f3-48d9-b371-85d71387bf0e/user_cropped_screenshot.jpeg?tl_px=0,0&br_px=1816,910&force_format=png&width=1120.0)
+    Then, hover over the upper right-hand side of one of the dashboard visualizations. Then click on the **three dots** and select **Explore**.
 
-    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2024-04-07/191763ae-a6ec-487b-accc-fdce8abc7f31/user_cropped_screenshot.jpeg?tl_px=154,51&br_px=1701,917&force_format=png&width=1120.0)
+    ![](images/awsapp_lambda_explore.png)
 
-    You should now be able to see the underlying query that makes up this panel - this is PromQL, the Prometheus query language. We're using PromQL to query our Grafana Cloud Metrics data source directly, as it now contains CloudWatch metrics that are being pulled from AWS, thanks to the AWS integration.
+    You should now be able to see the underlying query that makes up this panel - this is PromQL, the Prometheus query language. We're using PromQL to query our Grafana Cloud Metrics data source directly, as it now contains CloudWatch metrics that are being pulled from AWS, thanks to the AWS integration. 
+
+    For example, the "invocations" sum from CloudWatch is stored as `aws_lambda_invocations_sum` with the Grafana AWS Integration:
 
     ![](./images/cw_lambda_query.png)
 
@@ -174,10 +176,10 @@ A common use case to leverage the AWS Integrations is for Managed AWS Services. 
     ![](./images/cw_lambda_addtodash.png)
 
 
-### Part 3: Unified Monitoring with Grafana - The First Pane of Glass
-Grafana can query multiple data sources simultaneously. This means you can combine data from various AWS services (like CloudWatch, Elasticsearch, and AWS X-Ray) and other sources (like Prometheus or SQL databases) in a single dashboard for a unified view of your infrastructure and applications.
+### Using Grafana as your single pane of glass
+Grafana can query multiple data sources simultaneously. This means you can combine data from various AWS services (like CloudWatch, Elasticsearch, and AWS X-Ray) and other sources (like Prometheus or SQL databases) into a single dashboard for a unified view of your infrastructure and applications.
 
-By providing a centralized and unified view of your AWS observability data, Grafana telemetry backends can help you improve your team's operational efficiency. By centralizing observability data and providing pre-built dashboards and alerts, Grafana telemetry backends can help you reduce the time it takes to troubleshoot problems in your AWS environment.
+By centralizing observability data, providing pre-built dashboards and alerts, and allowing you to visualize data from your other backends, Grafana Cloud helps you reduce the time it takes to troubleshoot problems in your AWS environment.
 
 See [this blog](https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/) to learn more about the different types of dashboards you can build with Grafana.
 
@@ -189,7 +191,7 @@ This is the end of the lab! Read on to find out how to set up the AWS integratio
 
 **Note: The configuration of the AWS integration has been done for you already. You don't need to complete the following section. Read on to find out how to set up the CloudWatch integration in your own environment.**
 
-AWS integration setup (for information only):
+AWS integration setup (for your information only - you don't need to complete this task):
 
 1.  Go to AWS &rarr; Configuration. 
 
